@@ -12,4 +12,8 @@ export const WrapButton = styled.TouchableOpacity`
 export const TextButton = styled.Text`
   color: ${props => props.color};
   font-size: 18;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
 `;
