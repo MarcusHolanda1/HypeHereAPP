@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Login from './src/pages/Login';
+import InitialScreen from './src/pages/InitialScreen';
 
 export default function App() {
-  return <Login />;
+  return <InitialScreen />;
 }

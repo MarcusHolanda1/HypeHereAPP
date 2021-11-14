@@ -15,5 +15,31 @@ const Theme = {
     n32: '32px',
     n40: '40px',
   },
+  font: {
+    h1: {
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: '96px',
+    },
+    h2: {
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: '64px',
+    },
+    p: {
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '14px',
+    },
+    span: {
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontSize: '12px',
+    },
+  },
 };
 export default Theme;
