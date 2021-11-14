@@ -7,7 +7,7 @@ import SubLogo from '../../assets/images/logo/subLogo.png';
 import PrimaryButton from '../../design/components/Buttons/PrimaryButton';
 import {Text} from '../../design/components/Text/';
 
-export default function InitialScreen() {
+export default function InitialScreen({navigation}) {
   return (
     <S.Container>
       <S.BackgroundImage source={BackgroundImage}>
@@ -22,6 +22,7 @@ export default function InitialScreen() {
               color="#000"
               text="Fazer login"
               width="210px"
+              onPress={() => navigation.navigate('Login')}
             />
           </S.ContentButtonLogin>
           <S.ContentButtonRegister>

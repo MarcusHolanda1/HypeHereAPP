@@ -4,7 +4,6 @@ import Theme from '../../design/theme';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: red;
 `;
 
 export const BackgroundImage = styled.ImageBackground`

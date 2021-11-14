@@ -3,6 +3,7 @@ const Theme = {
     background: '#eeee',
     primary: '#75F7FF',
     black: '#000000',
+    white: '#FFFF',
   },
   spacing: {
     n2: '2px',
