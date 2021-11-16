@@ -39,5 +39,5 @@ export const ContentInputPassword = styled.View`
 `;
 
 export const ContentButton = styled.View`
-  top: 160px;
+  top: 170px;
 `;

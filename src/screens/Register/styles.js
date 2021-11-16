@@ -15,7 +15,7 @@ export const ContentLogo = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
-  top: 190px;
+  top: 120px;
 `;
 
 export const ImageLogo = styled.Image``;
@@ -29,15 +29,16 @@ export const ContentLogin = styled.View`
   align-items: center;
 `;
 
-export const ContentInputName = styled.View`
+export const ContentInput = styled.View`
   margin-bottom: ${Theme.spacing.n32};
   top: 40px;
 `;
 
-export const ContentInputPassword = styled.View`
-  top: 40px;
-`;
+// export const ContentInputPassword = styled.View`
+//   top: 40px;
+//   margin-bottom: ${Theme.spacing.n32};
+// `;
 
 export const ContentButton = styled.View`
-  top: 160px;
+  top: 75px;
 `;

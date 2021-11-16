@@ -25,12 +25,18 @@ export default function Register() {
                 <S.ImageLogo source={Logo} />
               </S.ContentLogo>
               <S.ContentLogin>
-                <S.ContentInputName>
+                <S.ContentInput>
                   <InputLogin placeholder="Digite seu nome" />
-                </S.ContentInputName>
-                <S.ContentInputPassword>
+                </S.ContentInput>
+                <S.ContentInput>
+                  <InputLogin placeholder="Digite email" />
+                </S.ContentInput>
+                <S.ContentInput>
                   <InputLogin placeholder="Digite sua senha" />
-                </S.ContentInputPassword>
+                </S.ContentInput>
+                <S.ContentInput>
+                  <InputLogin placeholder="Repetir senha" />
+                </S.ContentInput>
                 <S.ContentButton>
                   <PrimaryButton
                     background="#75F7FF"
