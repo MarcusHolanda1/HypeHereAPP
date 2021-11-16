@@ -31,6 +31,7 @@ export default function InitialScreen({navigation}) {
               color="#000"
               text="Cadastrar"
               width="193px"
+              onPress={() => navigation.navigate('Register')}
             />
           </S.ContentButtonRegister>
         </S.ContentButtons>
