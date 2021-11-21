@@ -3,12 +3,12 @@ import Theme from '../../theme';
 
 export const Container = styled.View`
   flex: 1;
-  background-color: ${Theme.colors.primary};
+  background-color: ${Theme.colors.background};
 `;
 
 export const SafeContainer = styled.SafeAreaView`
   flex: 1;
-  background-color: ${Theme.colors.primary};
+  background-color: ${Theme.colors.background};
 `;
 
 export const Content = styled.View`
@@ -21,5 +21,5 @@ export const ScrollContent = styled.ScrollView`
 
 export const KeyboardContainer = styled.KeyboardAvoidingView`
   flex: 1;
-  background-color: ${Theme.colors.primary};
+  background-color: ${Theme.colors.background};
 `;

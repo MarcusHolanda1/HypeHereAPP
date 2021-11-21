@@ -3,7 +3,7 @@ import {View} from 'react-native';
 
 import {H1, H2, P} from './styles';
 
-export function Text({type, ...rest}) {
+const Text = ({type, ...rest}) => {
   const render = useCallback(() => {
     switch (type) {
       case 'h1':
@@ -17,4 +17,5 @@ export function Text({type, ...rest}) {
     }
   }, [rest.children, type]);
   return render();
-}
+};
+export default Text;
