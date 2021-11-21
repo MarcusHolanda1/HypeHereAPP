@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "849851871054",
+    "project_id": "hype-here",
+    "storage_bucket": "hype-here.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849851871054:android:e7c1da19d4234d7e7cf81f",
+        "android_client_info": {
+          "package_name": "com.hypehere"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849851871054-q0mpld4t0iautle7em43ii0psi0s782j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ1RTSXiBPN2o8HImJW2WqW4Zi7JZZcIM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849851871054-q0mpld4t0iautle7em43ii0psi0s782j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
