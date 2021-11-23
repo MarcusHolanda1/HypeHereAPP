@@ -1,64 +1,45 @@
 import React, {useState} from 'react';
-import {
-  FlatList,
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
 import {Page, SearchBar, BrandButton, IconGlobal} from '../../design';
-// import {IconGlobal} from '../../design/components/IconGlobal/index';
-import IMAGES from '../../assets';
-
-import Saco from '../../assets/icons/brands/nike.png';
 
 const DATA = [
   {
     id: '1',
     title: 'First Item',
+    iconBrand: require('../../assets/icons/brands/jordan.png'),
   },
   {
     id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
     title: 'Second Item',
+    iconBrand: require('../../assets/icons/brands/adidas.png'),
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+    iconBrand: require('../../assets/icons/brands/puma.png'),
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+    iconBrand: require('../../assets/icons/brands/gucci.png'),
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
+    iconBrand: require('../../assets/icons/brands/balenciaga.png'),
+  },
+  {
+    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/nike.png'),
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
-  },
-  {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
-    title: 'Third Item',
   },
 ];
 
-const Item = ({onPress, backgroundColor, icon, source}) => (
-  <TouchableOpacity
-    icon={icon}
-    onPress={onPress}
-    style={[styles.item, backgroundColor]}>
-    {/* <Icon source={IMAGES.brands.adidas} width={10} height={10} /> */}
-    {/* <IconGlobal icon={icon} /> */}
+const Item = ({onPress, backgroundColor, source}) => (
+  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+    <IconGlobal source={source} />
   </TouchableOpacity>
 );
 
@@ -72,7 +53,7 @@ const Home = () => {
       <>
         <Item
           item={item}
-          icon={<IconGlobal source={item.iconBrand} />}
+          source={item.iconBrand}
           onPress={() => setSelectedId(item.id)}
           backgroundColor={{backgroundColor}}
         />
@@ -82,8 +63,6 @@ const Home = () => {
 
   return (
     <>
-      {/* <SafeAreaView style={styles.container}> */}
-
       <Page>
         <S.ContentHeader>
           <Logo width={150} height={35} />
@@ -98,7 +77,6 @@ const Home = () => {
           keyExtractor={item => item.id}
           extraData={selectedId}
         />
-        {/* <IconGlobal source={Nike} /> */}
       </Page>
     </>
   );
