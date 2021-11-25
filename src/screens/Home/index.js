@@ -3,6 +3,7 @@ import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
 import {Page, SearchBar, BrandButton, IconGlobal} from '../../design';
+import {Text} from '../../design';
 
 const DATA = [
   {
@@ -37,21 +38,30 @@ const DATA = [
   },
 ];
 
-const Item = ({onPress, backgroundColor, source}) => (
-  <TouchableOpacity onPress={onPress} style={[styles.item, backgroundColor]}>
+const ButtonBrand = ({onPress, backgroundColor, source}) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={[styles.brandButton, backgroundColor]}>
     <IconGlobal source={source} />
+  </TouchableOpacity>
+);
+
+const ButtonVertical = ({onPress, backgroundColor, source}) => (
+  <TouchableOpacity style={styles.verticalButton}>
+    <S.ContentTextGenders>
+      <Text type="p">Masculino</Text>
+    </S.ContentTextGenders>
   </TouchableOpacity>
 );
 
 const Home = () => {
   const [selectedId, setSelectedId] = useState(null);
 
-  const renderItem = ({item}) => {
+  const renderButtonBrand = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#75F7FF' : '#FAFAFA';
-    console.log(item);
     return (
       <>
-        <Item
+        <ButtonBrand
           item={item}
           source={item.iconBrand}
           onPress={() => setSelectedId(item.id)}
@@ -73,24 +83,41 @@ const Home = () => {
           showsHorizontalScrollIndicator={false}
           horizontal
           data={DATA}
-          renderItem={renderItem}
+          renderItem={renderButtonBrand}
           keyExtractor={item => item.id}
           extraData={selectedId}
         />
+        <S.ContentGenders>
+          <TouchableOpacity style={styles.verticalButton}>
+            <S.ContentTextGenders>
+              <Text type="p">Masculino</Text>
+            </S.ContentTextGenders>
+          </TouchableOpacity>
+        </S.ContentGenders>
       </Page>
     </>
   );
 };
 
 const styles = StyleSheet.create({
-  item: {
+  brandButton: {
     marginLeft: 10,
     marginTop: 12,
+    marginBottom: 24,
     width: 99,
     height: 64,
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  verticalButton: {
+    width: 69,
+    height: 132,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#75F7FF',
+    borderBottomLeftRadius: 16,
+    borderTopLeftRadius: 16,
   },
 });
 

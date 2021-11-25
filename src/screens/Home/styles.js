@@ -9,3 +9,11 @@ export const ContentHeader = styled.View`
 `;
 
 export const ContainerBrands = styled.SafeAreaView``;
+
+export const ContentGenders = styled.View`
+  align-self: flex-end;
+`;
+
+export const ContentTextGenders = styled.SafeAreaView`
+  transform: rotate(-90deg);
+`;
