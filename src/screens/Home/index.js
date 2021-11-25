@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import api from '../../services/client';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
@@ -12,27 +13,27 @@ const DATA = [
     iconBrand: require('../../assets/icons/brands/jordan.png'),
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '2',
     title: 'Second Item',
     iconBrand: require('../../assets/icons/brands/adidas.png'),
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    id: '3',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/puma.png'),
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    id: '4',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/gucci.png'),
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    id: '5',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/balenciaga.png'),
   },
   {
-    id: '58694a0f-3da1-471f-bd96-145571e29d72',
+    id: '6',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/nike.png'),
   },
