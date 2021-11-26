@@ -97,31 +97,32 @@ const Home = () => {
             extraData={selectedId}
           />
         </S.ContainerBrands>
-
-        <ContainerSneakers>
-          <CardSneakers>
-            <Text type="h1">OIII</Text>
-          </CardSneakers>
-          <CardSneakers>
-            <Text type="h1">OIII</Text>
-          </CardSneakers>
-          <CardSneakers>
-            <Text type="h1">OIII</Text>
-          </CardSneakers>
-          <CardSneakers>
-            <Text type="h1">OIII</Text>
-          </CardSneakers>
-          <CardSneakers>
-            <Text type="h1">OIII</Text>
-          </CardSneakers>
-        </ContainerSneakers>
-        <S.ContentGenders>
-          <TouchableOpacity style={styles.verticalButton}>
-            <S.ContentTextGenders>
-              <Text type="p">Masculino</Text>
-            </S.ContentTextGenders>
-          </TouchableOpacity>
-        </S.ContentGenders>
+        <S.ContainerUtil>
+          <ContainerSneakers>
+            <CardSneakers>
+              <Text type="h1">OIII</Text>
+            </CardSneakers>
+            <CardSneakers>
+              <Text type="h1">OIII</Text>
+            </CardSneakers>
+            <CardSneakers>
+              <Text type="h1">OIII</Text>
+            </CardSneakers>
+            <CardSneakers>
+              <Text type="h1">OIII</Text>
+            </CardSneakers>
+            <CardSneakers>
+              <Text type="h1">OIII</Text>
+            </CardSneakers>
+          </ContainerSneakers>
+          <S.ContentGenders>
+            <TouchableOpacity style={styles.verticalButton}>
+              <S.ContentTextGenders>
+                <Text type="p">Masculino</Text>
+              </S.ContentTextGenders>
+            </TouchableOpacity>
+          </S.ContentGenders>
+        </S.ContainerUtil>
       </Page>
     </>
   );

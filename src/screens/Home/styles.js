@@ -12,9 +12,11 @@ export const ContentHeader = styled.View`
 
 export const ContainerBrands = styled.SafeAreaView``;
 
+export const ContainerUtil = styled.View``;
+
 export const ContentGenders = styled.View`
   align-self: flex-end;
-  background-color: red;
+  position: absolute;
 `;
 
 export const ContentTextGenders = styled.SafeAreaView`
