@@ -3,7 +3,14 @@ import api from '../../services/client';
 import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
-import {Page, SearchBar, BrandButton, IconGlobal} from '../../design';
+import {
+  Page,
+  SearchBar,
+  BrandButton,
+  IconGlobal,
+  CardSneakers,
+  ContainerSneakers,
+} from '../../design';
 import {Text} from '../../design';
 
 const DATA = [
@@ -79,15 +86,35 @@ const Home = () => {
           <Logo width={150} height={35} />
           <SearchBar />
         </S.ContentHeader>
-        <FlatList
-          ItemSeparatorComponent={() => <View style={{width: 0}} />}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          data={DATA}
-          renderItem={renderButtonBrand}
-          keyExtractor={item => item.id}
-          extraData={selectedId}
-        />
+        <S.ContainerBrands>
+          <FlatList
+            ItemSeparatorComponent={() => <View style={{width: 0}} />}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            data={DATA}
+            renderItem={renderButtonBrand}
+            keyExtractor={item => item.id}
+            extraData={selectedId}
+          />
+        </S.ContainerBrands>
+
+        <ContainerSneakers>
+          <CardSneakers>
+            <Text type="h1">OIII</Text>
+          </CardSneakers>
+          <CardSneakers>
+            <Text type="h1">OIII</Text>
+          </CardSneakers>
+          <CardSneakers>
+            <Text type="h1">OIII</Text>
+          </CardSneakers>
+          <CardSneakers>
+            <Text type="h1">OIII</Text>
+          </CardSneakers>
+          <CardSneakers>
+            <Text type="h1">OIII</Text>
+          </CardSneakers>
+        </ContainerSneakers>
         <S.ContentGenders>
           <TouchableOpacity style={styles.verticalButton}>
             <S.ContentTextGenders>
@@ -102,7 +129,7 @@ const Home = () => {
 
 const styles = StyleSheet.create({
   brandButton: {
-    marginLeft: 10,
+    marginRight: 10,
     marginTop: 12,
     marginBottom: 24,
     width: 99,

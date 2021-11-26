@@ -13,10 +13,12 @@ export const SafeContainer = styled.SafeAreaView`
 
 export const Content = styled.View`
   padding-top: ${Theme.spacing.n16};
+  padding-left: ${Theme.spacing.n16};
 `;
 
 export const ScrollContent = styled.ScrollView`
   padding-top: ${Theme.spacing.n16};
+  padding-left: ${Theme.spacing.n16};
 `;
 
 export const KeyboardContainer = styled.KeyboardAvoidingView`
