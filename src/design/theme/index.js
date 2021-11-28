@@ -21,19 +21,19 @@ const Theme = {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
       fontWeight: 'bold',
-      fontSize: '96px',
+      fontSize: '24px',
     },
     h2: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
       fontWeight: 'bold',
-      fontSize: '64px',
+      fontSize: '18px',
     },
     p: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
       fontWeight: 'normal',
-      fontSize: '14px',
+      fontSize: '16px',
     },
     span: {
       fontFamily: 'Roboto',
