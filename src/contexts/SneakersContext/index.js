@@ -1,6 +1,5 @@
 import React, {useState, createContext, useEffect, useCallback} from 'react';
 import request from '../../services';
-import axios from 'axios';
 
 export const ContextSneakers = createContext();
 
