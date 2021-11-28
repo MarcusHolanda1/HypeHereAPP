@@ -7,4 +7,6 @@ export const Card = styled.View`
   width: 297px;
   height: 370px;
   position: relative;
+  margin-bottom: ${Theme.spacing.n24};
+  padding: ${Theme.spacing.n32};
 `;
