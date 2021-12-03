@@ -33,7 +33,7 @@ const Theme = {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
       fontWeight: 'normal',
-      fontSize: '16px',
+      fontSize: '14px',
     },
     span: {
       fontFamily: 'Roboto',
