@@ -8,14 +8,13 @@ export const SneakersContext = ({children}) => {
 
   const getAPI = useCallback(async () => {
     request.get().then(({data}) => {
-      setSneakers(data);
+      setSneakers(data.results);
     });
   }, []);
 
   useEffect(() => {
     getAPI();
   }, [getAPI]);
-  console.log(sneakers);
 
   return (
     <ContextSneakers.Provider
