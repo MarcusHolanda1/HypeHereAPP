@@ -1,46 +1,52 @@
-import React, {useState, useEffect} from 'react';
-import api from '../../services/client';
-import {FlatList, StyleSheet, TouchableOpacity, View} from 'react-native';
+import React, {useState, useEffect, useCallback, useContext} from 'react';
+import {
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Image,
+} from 'react-native';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
+import saco from '../../assets/icons/logo/logo.png';
 import {
   Page,
   SearchBar,
-  BrandButton,
   IconGlobal,
   CardSneakers,
   ContainerSneakers,
 } from '../../design';
 import {Text} from '../../design';
+import {ContextSneakers} from '../../contexts/SneakersContext';
 
 const DATA = [
   {
-    id: '1',
+    id: 'wd',
     title: 'First Item',
     iconBrand: require('../../assets/icons/brands/jordan.png'),
   },
   {
-    id: '2',
+    id: 'wr',
     title: 'Second Item',
     iconBrand: require('../../assets/icons/brands/adidas.png'),
   },
   {
-    id: '3',
+    id: 'wg',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/puma.png'),
   },
   {
-    id: '4',
+    id: 'wv',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/gucci.png'),
   },
   {
-    id: '5',
+    id: 'wn',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/balenciaga.png'),
   },
   {
-    id: '6',
+    id: 'wm',
     title: 'Third Item',
     iconBrand: require('../../assets/icons/brands/nike.png'),
   },
@@ -55,7 +61,10 @@ const ButtonBrand = ({onPress, backgroundColor, source}) => (
 );
 
 const ButtonVertical = ({onPress, backgroundColor, source}) => (
-  <TouchableOpacity style={styles.verticalButton}>
+  <TouchableOpacity
+    style={[styles.verticalButton, backgroundColor]}
+    TouchableOpacity
+    onPress={onPress}>
     <S.ContentTextGenders>
       <Text type="p">Masculino</Text>
     </S.ContentTextGenders>
@@ -64,6 +73,7 @@ const ButtonVertical = ({onPress, backgroundColor, source}) => (
 
 const Home = () => {
   const [selectedId, setSelectedId] = useState(null);
+  const {sneakers, setSneakers} = useContext(ContextSneakers);
 
   const renderButtonBrand = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#75F7FF' : '#FAFAFA';
@@ -76,6 +86,46 @@ const Home = () => {
           backgroundColor={{backgroundColor}}
         />
       </>
+    );
+  };
+
+  const renderButtonVertical = ({item}) => {
+    const backgroundColor = item.id === selectedId ? '#75F7FF' : '#FAFAFA';
+    return (
+      <>
+        <ButtonVertical
+          item={item}
+          source={item.iconBrand}
+          onPress={() => setSelectedId(item.id)}
+          backgroundColor={{backgroundColor}}
+        />
+      </>
+    );
+  };
+
+  const renderContainerSneakers = () => {
+    return (
+      <ContainerSneakers>
+        {sneakers.map(sneaker => {
+          console.log(sneaker.media.thumbUrl);
+          if (sneaker.media.thumbUrl != null) {
+            return (
+              <CardSneakers key={sneaker.id}>
+                <Text type="h2">{sneaker.name}</Text>
+                <S.ContentThumbs>
+                  <Image
+                    source={{
+                      uri: sneaker.media.thumbUrl,
+                    }}
+                    style={{width: 253, height: 157}}
+                    resizeMode="contain"
+                  />
+                </S.ContentThumbs>
+              </CardSneakers>
+            );
+          }
+        })}
+      </ContainerSneakers>
     );
   };
 
@@ -98,31 +148,19 @@ const Home = () => {
           />
         </S.ContainerBrands>
         <S.ContainerUtil>
-          <ContainerSneakers>
-            <CardSneakers>
-              <Text type="h1">OIII</Text>
-            </CardSneakers>
-            <CardSneakers>
-              <Text type="h1">OIII</Text>
-            </CardSneakers>
-            <CardSneakers>
-              <Text type="h1">OIII</Text>
-            </CardSneakers>
-            <CardSneakers>
-              <Text type="h1">OIII</Text>
-            </CardSneakers>
-            <CardSneakers>
-              <Text type="h1">OIII</Text>
-            </CardSneakers>
-          </ContainerSneakers>
           <S.ContentGenders>
-            <TouchableOpacity style={styles.verticalButton}>
-              <S.ContentTextGenders>
-                <Text type="p">Masculino</Text>
-              </S.ContentTextGenders>
-            </TouchableOpacity>
+            <FlatList
+              ItemSeparatorComponent={() => <View style={{width: 0}} />}
+              showsHorizontalScrollIndicator={false}
+              vertical
+              data={DATA}
+              renderItem={renderButtonVertical}
+              keyExtractor={item => item.id}
+              extraData={selectedId}
+            />
           </S.ContentGenders>
         </S.ContainerUtil>
+        {renderContainerSneakers()}
       </Page>
     </>
   );
@@ -140,8 +178,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   verticalButton: {
+    marginBottom: 20,
     width: 69,
-    height: 132,
+    height: 110,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#75F7FF',
