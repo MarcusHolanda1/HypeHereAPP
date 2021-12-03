@@ -22,3 +22,7 @@ export const ContentGenders = styled.View`
 export const ContentTextGenders = styled.SafeAreaView`
   transform: rotate(-90deg);
 `;
+
+export const ContentThumbs = styled.View`
+  margin-top: ${Theme.spacing.n24};
+`;
