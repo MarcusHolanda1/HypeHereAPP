@@ -8,16 +8,17 @@ import {
 } from 'react-native';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
-import saco from '../../assets/icons/logo/logo.png';
 import {
   Page,
   SearchBar,
   IconGlobal,
   CardSneakers,
   ContainerSneakers,
+  PrimaryButton,
 } from '../../design';
 import {Text} from '../../design';
 import {ContextSneakers} from '../../contexts/SneakersContext';
+import Theme from '../../design/theme';
 
 const DATA = [
   {
@@ -117,10 +118,20 @@ const Home = () => {
                     source={{
                       uri: sneaker.media.thumbUrl,
                     }}
-                    style={{width: 253, height: 157}}
+                    style={{width: 220, height: 140}}
                     resizeMode="contain"
                   />
                 </S.ContentThumbs>
+                <Text type="h1">$ {sneaker.retailPrice}</Text>
+                <S.ContentButtonBuy>
+                  <PrimaryButton
+                    background="#75F7FF"
+                    color="#000"
+                    text="Comprar"
+                    width="156px"
+                    heigth="56px"
+                  />
+                </S.ContentButtonBuy>
               </CardSneakers>
             );
           }

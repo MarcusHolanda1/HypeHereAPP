@@ -25,4 +25,9 @@ export const ContentTextGenders = styled.SafeAreaView`
 
 export const ContentThumbs = styled.View`
   margin-top: ${Theme.spacing.n24};
+  margin-bottom: ${Theme.spacing.n24};
+`;
+
+export const ContentButtonBuy = styled.View`
+  align-self: flex-end;
 `;
