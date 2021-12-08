@@ -66,9 +66,11 @@ const ButtonVertical = ({onPress, backgroundColor, source}) => (
 );
 
 const Home = () => {
-  const [selectedBrand, setSelectedBrand] = useState('jordan');
+  const [selectedBrand, setSelectedBrand] = useState('Jordan');
   const {sneakers, setSneakers} = useContext(ContextSneakers);
   const [filteredSneakers, setFilteredSneakers] = useState([]);
+
+  console.log(sneakers);
 
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
