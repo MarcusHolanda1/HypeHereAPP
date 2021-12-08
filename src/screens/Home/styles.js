@@ -10,7 +10,9 @@ export const ContentHeader = styled.View`
   padding-right: ${Theme.spacing.n16};
 `;
 
-export const ContainerBrands = styled.SafeAreaView``;
+export const ContainerBrands = styled.SafeAreaView`
+  flex-direction: row;
+`;
 
 export const ContainerUtil = styled.View``;
 
