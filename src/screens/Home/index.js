@@ -18,37 +18,30 @@ import {
 } from '../../design';
 import {Text} from '../../design';
 import {ContextSneakers} from '../../contexts/SneakersContext';
-import Theme from '../../design/theme';
 
 const DATA = [
   {
-    id: 'wd',
-    title: 'First Item',
+    id: 'Jordan',
     iconBrand: require('../../assets/icons/brands/jordan.png'),
   },
   {
-    id: 'wr',
-    title: 'Second Item',
+    id: 'adidas',
     iconBrand: require('../../assets/icons/brands/adidas.png'),
   },
   {
-    id: 'wg',
-    title: 'Third Item',
+    id: 'puma',
     iconBrand: require('../../assets/icons/brands/puma.png'),
   },
   {
-    id: 'wv',
-    title: 'Third Item',
+    id: 'gucci',
     iconBrand: require('../../assets/icons/brands/gucci.png'),
   },
   {
-    id: 'wn',
-    title: 'Third Item',
+    id: 'balenciaga',
     iconBrand: require('../../assets/icons/brands/balenciaga.png'),
   },
   {
-    id: 'wm',
-    title: 'Third Item',
+    id: 'Nike',
     iconBrand: require('../../assets/icons/brands/nike.png'),
   },
 ];
@@ -73,17 +66,31 @@ const ButtonVertical = ({onPress, backgroundColor, source}) => (
 );
 
 const Home = () => {
-  const [selectedId, setSelectedId] = useState(null);
+  const [selectedBrand, setSelectedBrand] = useState('jordan');
   const {sneakers, setSneakers} = useContext(ContextSneakers);
+  const [filteredSneakers, setFilteredSneakers] = useState([]);
+
+  const handleFilterByBrand = useCallback(() => {
+    const filtered = sneakers.filter(e => e.brand === selectedBrand);
+    if (filtered) setFilteredSneakers(filtered);
+  }, [selectedBrand, sneakers]);
+
+  useEffect(() => {
+    handleFilterByBrand()
+  }, [handleFilterByBrand]);
+
+  useEffect(() => {
+    setFilteredSneakers(sneakers);
+  }, [sneakers]);
 
   const renderButtonBrand = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#75F7FF' : '#FAFAFA';
+    const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
     return (
       <>
         <ButtonBrand
           item={item}
           source={item.iconBrand}
-          onPress={() => setSelectedId(item.id)}
+          onPress={() => setSelectedBrand(item.id)}
           backgroundColor={{backgroundColor}}
         />
       </>
@@ -91,13 +98,13 @@ const Home = () => {
   };
 
   const renderButtonVertical = ({item}) => {
-    const backgroundColor = item.id === selectedId ? '#75F7FF' : '#FAFAFA';
+    const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
     return (
       <>
         <ButtonVertical
           item={item}
           source={item.iconBrand}
-          onPress={() => setSelectedId(item.id)}
+          onPress={() => setSelectedBrand(item.id)}
           backgroundColor={{backgroundColor}}
         />
       </>
@@ -107,8 +114,7 @@ const Home = () => {
   const renderContainerSneakers = () => {
     return (
       <ContainerSneakers>
-        {sneakers.map(sneaker => {
-          console.log(sneaker.media.thumbUrl);
+        {filteredSneakers.map(sneaker => {
           if (sneaker.media.thumbUrl != null) {
             return (
               <CardSneakers key={sneaker.id}>
@@ -155,7 +161,7 @@ const Home = () => {
             data={DATA}
             renderItem={renderButtonBrand}
             keyExtractor={item => item.id}
-            extraData={selectedId}
+            extraData={selectedBrand}
           />
         </S.ContainerBrands>
         <S.ContainerUtil>
@@ -167,7 +173,7 @@ const Home = () => {
               data={DATA}
               renderItem={renderButtonVertical}
               keyExtractor={item => item.id}
-              extraData={selectedId}
+              extraData={selectedBrand}
             />
           </S.ContentGenders>
         </S.ContainerUtil>
