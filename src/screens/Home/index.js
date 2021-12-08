@@ -70,15 +70,13 @@ const Home = () => {
   const {sneakers, setSneakers} = useContext(ContextSneakers);
   const [filteredSneakers, setFilteredSneakers] = useState([]);
 
-  console.log(sneakers);
-
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
     if (filtered) setFilteredSneakers(filtered);
   }, [selectedBrand, sneakers]);
 
   useEffect(() => {
-    handleFilterByBrand()
+    handleFilterByBrand();
   }, [handleFilterByBrand]);
 
   useEffect(() => {
