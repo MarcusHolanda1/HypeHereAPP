@@ -46,6 +46,21 @@ const DATA = [
   },
 ];
 
+const genders = [
+  {
+    id: 'men',
+    name: 'Masculino',
+  },
+  {
+    id: 'women',
+    name: 'Feminino',
+  },
+  {
+    id: 'toddler',
+    name: 'KIDS',
+  },
+];
+
 const ButtonBrand = ({onPress, backgroundColor, source}) => (
   <TouchableOpacity
     onPress={onPress}
@@ -54,26 +69,39 @@ const ButtonBrand = ({onPress, backgroundColor, source}) => (
   </TouchableOpacity>
 );
 
-const ButtonVertical = ({onPress, backgroundColor, source}) => (
+const ButtonVertical = ({onPress, backgroundColor, item}) => (
   <TouchableOpacity
     style={[styles.verticalButton, backgroundColor]}
     TouchableOpacity
     onPress={onPress}>
     <S.ContentTextGenders>
-      <Text type="p">Masculino</Text>
+      <Text type="p">{item.name}</Text>
     </S.ContentTextGenders>
   </TouchableOpacity>
 );
 
 const Home = () => {
-  const [selectedBrand, setSelectedBrand] = useState('Jordan');
+  const [selectedBrand, setSelectedBrand] = useState();
   const {sneakers, setSneakers} = useContext(ContextSneakers);
   const [filteredSneakers, setFilteredSneakers] = useState([]);
+  const [selectedGender, setSelectedGender] = useState();
+  const [filteredGenders, setFilteredGenders] = useState([]);
 
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
     if (filtered) setFilteredSneakers(filtered);
   }, [selectedBrand, sneakers]);
+
+  const handleFilterByGender = useCallback(() => {
+    const filtered = sneakers.filter(
+      e => e.gender === selectedGender && e.brand === selectedBrand,
+    );
+    if (filtered) setFilteredSneakers(filtered);
+  }, [selectedBrand, selectedGender, sneakers]);
+
+  useEffect(() => {
+    handleFilterByGender();
+  }, [handleFilterByGender]);
 
   useEffect(() => {
     handleFilterByBrand();
@@ -98,13 +126,12 @@ const Home = () => {
   };
 
   const renderButtonVertical = ({item}) => {
-    const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
+    const backgroundColor = item.id === selectedGender ? '#75F7FF' : '#FAFAFA';
     return (
       <>
         <ButtonVertical
           item={item}
-          source={item.iconBrand}
-          onPress={() => setSelectedBrand(item.id)}
+          onPress={() => setSelectedGender(item.id)}
           backgroundColor={{backgroundColor}}
         />
       </>
@@ -170,10 +197,10 @@ const Home = () => {
               ItemSeparatorComponent={() => <View style={{width: 0}} />}
               showsHorizontalScrollIndicator={false}
               vertical
-              data={DATA}
+              data={genders}
               renderItem={renderButtonVertical}
               keyExtractor={item => item.id}
-              extraData={selectedBrand}
+              extraData={selectedGender}
             />
           </S.ContentGenders>
         </S.ContainerUtil>
@@ -196,8 +223,8 @@ const styles = StyleSheet.create({
   },
   verticalButton: {
     marginBottom: 20,
-    width: 69,
-    height: 110,
+    width: 74,
+    height: 111,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#75F7FF',
