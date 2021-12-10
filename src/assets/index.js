@@ -1,12 +1,16 @@
-// const IMAGES = {
-//   brands: {
-//     nike: require('./images/brands/nike.png'),
-//     jordan: require('./images/brands/jordan.png'),
-//     puma: require('./images/brands/puma.png'),
-//     adidas: require('./images/brands/adidas.png'),
-//     gucci: require('./images/brands/gucci.png'),
-//     balenciaga: require('./images/brands/balenciaga.png'),
-//   },
-// };
+const IMAGES = {
+  inactive: {
+    cart: require('./icons/tabNavigation/cartInactive.png'),
+    favorite: require('./icons/tabNavigation/favoriteInactive.png'),
+    home: require('./icons/tabNavigation/homeInactive.png'),
+    user: require('./icons/tabNavigation/userInactive.png'),
+  },
+  active: {
+    cart: require('./icons/tabNavigation/cartActive.png'),
+    favorite: require('./icons/tabNavigation/favoriteActive.png'),
+    home: require('./icons/tabNavigation/homeActive.png'),
+    user: require('./icons/tabNavigation/userActive.png'),
+  },
+};
 
-// export default IMAGES;
+export default IMAGES;
