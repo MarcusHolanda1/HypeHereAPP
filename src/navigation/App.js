@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Home from '../screens/Home';
+import Cart from '../screens/Cart';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   createBottomTabNavigator,
@@ -40,9 +41,9 @@ export default function App() {
                 tabBarIcon: () => (
                   <IconGlobal
                     source={
-                      navigation.getState().index === 1
-                        ? IMAGES.inactive.home
-                        : IMAGES.active.home
+                      navigation.getState().index === 0
+                        ? IMAGES.active.home
+                        : IMAGES.inactive.home
                     }
                   />
                 ),
@@ -50,7 +51,24 @@ export default function App() {
               };
             }}
           />
-          <Tab.Screen name="Cart" component={Home} />
+          <Tab.Screen
+            name="Cart"
+            component={Cart}
+            options={({navigation}) => {
+              return {
+                tabBarIcon: () => (
+                  <IconGlobal
+                    source={
+                      navigation.getState().index === 1
+                        ? IMAGES.active.cart
+                        : IMAGES.inactive.cart
+                    }
+                  />
+                ),
+                ...screenOptions,
+              };
+            }}
+          />
           <Tab.Screen name="Favorites" component={Home} />
           <Tab.Screen name="User" component={Home} />
         </Tab.Navigator>
