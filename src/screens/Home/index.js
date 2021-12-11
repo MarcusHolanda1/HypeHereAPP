@@ -145,7 +145,7 @@ const Home = () => {
           if (sneaker.media.thumbUrl != null) {
             return (
               <CardSneakers key={sneaker.id}>
-                <Text type="h2">{sneaker.name}</Text>
+                <Text type="h2">{sneaker.shoe}</Text>
                 <S.ContentThumbs>
                   <Image
                     source={{
@@ -155,7 +155,7 @@ const Home = () => {
                     resizeMode="contain"
                   />
                 </S.ContentThumbs>
-                <Text type="h1">$ {sneaker.retailPrice}</Text>
+                <Text type="h1">R$ {sneaker.retailPrice},00</Text>
                 <S.ContentButtonBuy>
                   <PrimaryButton
                     background="#75F7FF"
