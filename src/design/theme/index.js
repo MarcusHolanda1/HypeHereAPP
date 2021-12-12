@@ -4,6 +4,7 @@ const Theme = {
     primary: '#75F7FF',
     black: '#000000',
     white: '#FFFF',
+    gray: '#6C6969',
   },
   spacing: {
     n2: '2px',
@@ -20,6 +21,12 @@ const Theme = {
     h1: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
+      fontWeight: 'medium',
+      fontSize: '24px',
+    },
+    h1Price: {
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
       fontWeight: 'bold',
       fontSize: '24px',
     },
@@ -32,7 +39,7 @@ const Theme = {
     p: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
-      fontWeight: 'regular',
+      fontWeight: 'medium',
       fontSize: '16px',
     },
     span: {
