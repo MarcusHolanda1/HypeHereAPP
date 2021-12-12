@@ -1,6 +1,5 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
 import Cart from '../screens/ViewSneaker';
 import ViewSneaker from '../screens/ViewSneaker';
@@ -12,7 +11,6 @@ import {
 import {SneakersContext} from '../contexts/SneakersContext';
 import {IconGlobal} from '../design';
 import IMAGES from '../assets';
-import Theme from '../design/theme';
 import {createStackNavigator} from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
@@ -25,11 +23,48 @@ const screenOptions = {
 
 const Stack = createStackNavigator();
 
-function SneakersViewStackScreen({navigation}) {
+function Main() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="ViewSneaker" component={ViewSneaker} />
-    </Stack.Navigator>
+    <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={({navigation}) => {
+          return {
+            tabBarIcon: () => (
+              <IconGlobal
+                source={
+                  navigation.getState().index === 0
+                    ? IMAGES.active.home
+                    : IMAGES.inactive.home
+                }
+              />
+            ),
+            ...screenOptions,
+          };
+        }}
+      />
+      <Tab.Screen
+        name="Cart"
+        component={Cart}
+        options={({navigation}) => {
+          return {
+            tabBarIcon: () => (
+              <IconGlobal
+                source={
+                  navigation.getState().index === 1
+                    ? IMAGES.active.cart
+                    : IMAGES.inactive.cart
+                }
+              />
+            ),
+            ...screenOptions,
+          };
+        }}
+      />
+      <Tab.Screen name="Favorites" component={Home} />
+      <Tab.Screen name="User" component={Home} />
+    </Tab.Navigator>
   );
 }
 
@@ -37,53 +72,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <SneakersContext>
-        <Tab.Navigator
-          initialRouteName="Home"
-          screenOptions={{headerShown: false}}>
-          <Tab.Screen
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
             name="Home"
-            component={Home}
-            options={({navigation}) => {
-              return {
-                tabBarIcon: () => (
-                  <IconGlobal
-                    source={
-                      navigation.getState().index === 0
-                        ? IMAGES.active.home
-                        : IMAGES.inactive.home
-                    }
-                  />
-                ),
-                ...screenOptions,
-              };
-            }}
+            component={Main}
+            options={{headerShown: false}}
           />
-          <Tab.Screen
-            name="Cart"
-            component={Cart}
-            options={({navigation}) => {
-              return {
-                tabBarIcon: () => (
-                  <IconGlobal
-                    source={
-                      navigation.getState().index === 1
-                        ? IMAGES.active.cart
-                        : IMAGES.inactive.cart
-                    }
-                  />
-                ),
-                ...screenOptions,
-              };
-            }}
-          />
-          <Tab.Screen name="Favorites" component={Home} />
-          <Tab.Screen name="User" component={Home} />
-          <Tab.Screen
-            name="ViewSneaker"
-            component={SneakersViewStackScreen}
-            options={{tabBarStyle: {display: 'none'}}}
-          />
-        </Tab.Navigator>
+          <Stack.Screen name="ViewSneaker" component={ViewSneaker} />
+        </Stack.Navigator>
       </SneakersContext>
     </NavigationContainer>
   );
