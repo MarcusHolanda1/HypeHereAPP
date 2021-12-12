@@ -1,7 +1,7 @@
 import React from 'react';
 import 'react-native-gesture-handler';
 import Home from '../screens/Home';
-import Cart from '../screens/ViewSneaker';
+import Cart from '../screens/Cart';
 import ViewSneaker from '../screens/ViewSneaker';
 import {NavigationContainer} from '@react-navigation/native';
 import {
@@ -78,7 +78,16 @@ export default function App() {
             component={Main}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="ViewSneaker" component={ViewSneaker} />
+          <Stack.Screen
+            name="Cart"
+            component={Cart}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="ViewSneaker"
+            options={{headerShown: false}}
+            component={ViewSneaker}
+          />
         </Stack.Navigator>
       </SneakersContext>
     </NavigationContainer>
