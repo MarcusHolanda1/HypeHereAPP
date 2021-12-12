@@ -80,7 +80,7 @@ const ButtonVertical = ({onPress, backgroundColor, item}) => (
   </TouchableOpacity>
 );
 
-const Home = () => {
+const Home = ({navigation}) => {
   const [selectedBrand, setSelectedBrand] = useState();
   const {sneakers, setSneakers} = useContext(ContextSneakers);
   const [filteredSneakers, setFilteredSneakers] = useState([]);
@@ -142,10 +142,14 @@ const Home = () => {
     return (
       <ContainerSneakers>
         {filteredSneakers.map(sneaker => {
+          let shoeString = sneaker.shoe;
+          let showStringSplit = shoeString.split(' ', 3);
+          let shoeStringSpace = showStringSplit.join(' ');
+
           if (sneaker.media.thumbUrl != null) {
             return (
               <CardSneakers key={sneaker.id}>
-                <Text type="h2">{sneaker.shoe}</Text>
+                <Text type="h2">{shoeStringSpace}</Text>
                 <S.ContentThumbs>
                   <Image
                     source={{
@@ -158,6 +162,13 @@ const Home = () => {
                 <Text type="h1">R$ {sneaker.retailPrice},00</Text>
                 <S.ContentButtonBuy>
                   <PrimaryButton
+                    onPress={() =>
+                      navigation.navigate('ViewSneaker', {
+                        shoe: sneaker.shoe,
+                        image: sneaker.media.imageUrl,
+                        price: sneaker.retailPrice,
+                      })
+                    }
                     background="#75F7FF"
                     color="#000"
                     text="Comprar"
