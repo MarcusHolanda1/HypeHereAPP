@@ -11,6 +11,13 @@ const IMAGES = {
     home: require('./icons/tabNavigation/homeActive.png'),
     user: require('./icons/tabNavigation/userActive.png'),
   },
+  handle: {
+    handleBack: require('./handle/handleBack.png'),
+  },
+  stars: {
+    starFull: require('./icons/stars/starFull.png'),
+    starHalf: require('./icons/stars/starHalf.png'),
+  },
 };
 
 export default IMAGES;
