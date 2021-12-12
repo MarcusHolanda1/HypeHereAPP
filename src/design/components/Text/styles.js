@@ -10,6 +10,14 @@ export const H1 = styled.Text`
   font-size: ${Theme.font.h1.fontSize};
 `;
 
+export const H1PRICE = styled.Text`
+  color: ${Theme.colors.primary};
+  font-family: ${Theme.font.h1Price.fontFamily};
+  font-style: ${Theme.font.h1Price.fontStyle};
+  font-weight: ${Theme.font.h1Price.fontWeight};
+  font-size: ${Theme.font.h1Price.fontSize};
+`;
+
 export const H2 = styled.Text`
   color: ${Theme.colors.black};
   font-family: ${Theme.font.h2.fontFamily};
@@ -19,7 +27,7 @@ export const H2 = styled.Text`
 `;
 
 export const P = styled.Text`
-  color: ${Theme.colors.black};
+  color: ${Theme.colors.gray};
   font-family: ${Theme.font.p.fontFamily};
   font-style: ${Theme.font.p.fontStyle};
   font-weight: ${Theme.font.p.fontWeight};
