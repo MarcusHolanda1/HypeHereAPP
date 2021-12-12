@@ -4,3 +4,4 @@ export {default as Text} from './Text/index';
 export {default as SearchBar} from './SearchBar';
 export {default as IconGlobal} from './IconGlobal';
 export {default as CardSneakers} from './CardSneakers';
+export {default as BackButton} from './Buttons/BackButton';
