@@ -1,7 +1,9 @@
 import React from 'react';
-
+import 'react-native-gesture-handler';
+import {getFocusedRouteNameFromRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
-import Cart from '../screens/Cart';
+import Cart from '../screens/ViewSneaker';
+import ViewSneaker from '../screens/ViewSneaker';
 import {NavigationContainer} from '@react-navigation/native';
 import {
   createBottomTabNavigator,
@@ -11,20 +13,25 @@ import {SneakersContext} from '../contexts/SneakersContext';
 import {IconGlobal} from '../design';
 import IMAGES from '../assets';
 import Theme from '../design/theme';
+import {createStackNavigator} from '@react-navigation/stack';
 
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-  // tabBarActiveTintColor: Theme.colors.primary,
-  // tabBarInactiveTintColor: Theme.colors.background,
-  // tabBarStyle: {
-  //   backgroundColor: Theme.colors.white,
-  //   borderTopColor: Theme.colors.white,
-  // },
   tabBarLabelStyle: {
     display: 'none',
   },
 };
+
+const Stack = createStackNavigator();
+
+function SneakersViewStackScreen({navigation}) {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="ViewSneaker" component={ViewSneaker} />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -71,6 +78,11 @@ export default function App() {
           />
           <Tab.Screen name="Favorites" component={Home} />
           <Tab.Screen name="User" component={Home} />
+          <Tab.Screen
+            name="ViewSneaker"
+            component={SneakersViewStackScreen}
+            options={{tabBarStyle: {display: 'none'}}}
+          />
         </Tab.Navigator>
       </SneakersContext>
     </NavigationContainer>
