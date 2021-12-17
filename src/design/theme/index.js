@@ -22,7 +22,7 @@ const Theme = {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
       fontWeight: 'medium',
-      fontSize: '24px',
+      fontSize: '22px',
     },
     h1Price: {
       fontFamily: 'Roboto',
