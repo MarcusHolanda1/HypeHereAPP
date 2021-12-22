@@ -3,7 +3,6 @@ import Theme from '../../../theme';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export const WrapButton = styled.TouchableOpacity`
-  margin-top: 10;
   width: ${props => props.width};
   height: ${props => props.heigth};
   background-color: ${props => props.background};
