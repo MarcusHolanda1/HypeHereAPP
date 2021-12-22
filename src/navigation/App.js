@@ -4,11 +4,9 @@ import Home from '../screens/Home';
 import Cart from '../screens/Cart';
 import ViewSneaker from '../screens/ViewSneaker';
 import {NavigationContainer} from '@react-navigation/native';
-import {
-  createBottomTabNavigator,
-  BottomTabNavigationOptions,
-} from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SneakersContext} from '../contexts/SneakersContext';
+import {FavoritesContextProvider} from '../contexts/FavoriteContext';
 import {IconGlobal} from '../design';
 import IMAGES from '../assets';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -72,23 +70,25 @@ export default function App() {
   return (
     <NavigationContainer>
       <SneakersContext>
-        <Stack.Navigator initialRouteName="Home">
-          <Stack.Screen
-            name="Home"
-            component={Main}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="Cart"
-            component={Cart}
-            options={{headerShown: false}}
-          />
-          <Stack.Screen
-            name="ViewSneaker"
-            options={{headerShown: false}}
-            component={ViewSneaker}
-          />
-        </Stack.Navigator>
+        <FavoritesContextProvider>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              name="Home"
+              component={Main}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="Cart"
+              component={Cart}
+              options={{headerShown: false}}
+            />
+            <Stack.Screen
+              name="ViewSneaker"
+              options={{headerShown: false}}
+              component={ViewSneaker}
+            />
+          </Stack.Navigator>
+        </FavoritesContextProvider>
       </SneakersContext>
     </NavigationContainer>
   );
