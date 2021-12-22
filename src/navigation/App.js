@@ -3,6 +3,7 @@ import 'react-native-gesture-handler';
 import Home from '../screens/Home';
 import Cart from '../screens/Cart';
 import ViewSneaker from '../screens/ViewSneaker';
+import FavoriteLIst from '../screens/FavoriteList';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SneakersContext} from '../contexts/SneakersContext';
@@ -60,7 +61,24 @@ function Main() {
           };
         }}
       />
-      <Tab.Screen name="Favorites" component={Home} />
+      <Tab.Screen
+        name="FavoriteList"
+        component={FavoriteLIst}
+        options={({navigation}) => {
+          return {
+            tabBarIcon: () => (
+              <IconGlobal
+                source={
+                  navigation.getState().index === 2
+                    ? IMAGES.active.favorite
+                    : IMAGES.inactive.favorite
+                }
+              />
+            ),
+            ...screenOptions,
+          };
+        }}
+      />
       <Tab.Screen name="User" component={Home} />
     </Tab.Navigator>
   );
@@ -86,6 +104,11 @@ export default function App() {
               name="ViewSneaker"
               options={{headerShown: false}}
               component={ViewSneaker}
+            />
+            <Stack.Screen
+              name="FavoriteList"
+              options={{headerShown: false}}
+              component={FavoriteLIst}
             />
           </Stack.Navigator>
         </FavoritesContextProvider>
