@@ -13,6 +13,8 @@ const IMAGES = {
   },
   handle: {
     handleBack: require('./handle/handleBack.png'),
+    favorite: require('./handle/favorite.png'),
+    setFavorite: require('./handle/setFavorite.png'),
   },
   stars: {
     starFull: require('./icons/stars/starFull.png'),
