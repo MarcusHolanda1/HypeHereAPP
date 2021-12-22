@@ -21,7 +21,7 @@ const Theme = {
     h1: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
-      fontWeight: 'medium',
+      fontWeight: '500',
       fontSize: '22px',
     },
     h1Price: {
@@ -39,7 +39,7 @@ const Theme = {
     p: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
-      fontWeight: 'medium',
+      fontWeight: '500',
       fontSize: '16px',
     },
     span: {
