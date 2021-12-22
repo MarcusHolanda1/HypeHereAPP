@@ -32,3 +32,12 @@ export const ContentThumbs = styled.View`
 export const ContentButtonBuy = styled.View`
   align-self: flex-end;
 `;
+
+export const ContentShoeAndFavorite = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const ContentFavorite = styled.View`
+  top: 5px;
+`;
