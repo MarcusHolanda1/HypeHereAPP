@@ -18,6 +18,8 @@ import {
 } from '../../design';
 import {Text} from '../../design';
 import {ContextSneakers} from '../../contexts/SneakersContext';
+import {useFavorites} from '../../contexts/FavoriteContext';
+import IMAGES from '../../assets';
 
 const DATA = [
   {
@@ -81,11 +83,15 @@ const ButtonVertical = ({onPress, backgroundColor, item}) => (
 );
 
 const Home = ({navigation}) => {
-  const [selectedBrand, setSelectedBrand] = useState();
   const {sneakers, setSneakers} = useContext(ContextSneakers);
+  const {addProductInFavorites, removeProductTheFavorites, favorites} =
+    useFavorites();
+  const [selectedBrand, setSelectedBrand] = useState();
   const [filteredSneakers, setFilteredSneakers] = useState([]);
   const [selectedGender, setSelectedGender] = useState();
-  const [filteredGenders, setFilteredGenders] = useState([]);
+  // const [filteredGenders, setFilteredGenders] = useState([]);
+  // const [favorite, setFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
@@ -100,6 +106,27 @@ const Home = ({navigation}) => {
   }, [selectedBrand, selectedGender, sneakers]);
 
   useEffect(() => {
+    if (sneakers) {
+      const alreadyIsFavorite = favorites.find(find => find.id === sneakers.id);
+      setIsFavorite(!!alreadyIsFavorite);
+    }
+  }, [favorites, sneakers]);
+
+  const handleAddSneakersFavorites = useCallback(
+    (sneakers, toggle) => {
+      setIsFavorite(!isFavorite);
+
+      if (sneakers && toggle) {
+        addProductInFavorites(sneakers);
+      }
+      if (sneakers && !toggle) {
+        removeProductTheFavorites(sneakers);
+      }
+    },
+    [addProductInFavorites, removeProductTheFavorites, isFavorite],
+  );
+
+  useEffect(() => {
     handleFilterByGender();
   }, [handleFilterByGender]);
 
@@ -110,6 +137,9 @@ const Home = ({navigation}) => {
   useEffect(() => {
     setFilteredSneakers(sneakers);
   }, [sneakers]);
+
+  console.log(favorites);
+  console.log(isFavorite);
 
   const renderButtonBrand = ({item}) => {
     const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
@@ -149,7 +179,23 @@ const Home = ({navigation}) => {
           if (sneaker.media.thumbUrl != null) {
             return (
               <CardSneakers key={sneaker.id}>
-                <Text type="h2">{shoeStringSpace}</Text>
+                <S.ContentShoeAndFavorite>
+                  <Text type="h1">{shoeStringSpace}</Text>
+                  <S.ContentFavorite>
+                    <TouchableOpacity
+                      onPress={() =>
+                        handleAddSneakersFavorites(sneaker, !isFavorite)
+                      }>
+                      <IconGlobal
+                        source={
+                          isFavorite
+                            ? IMAGES.handle.favorite
+                            : IMAGES.handle.setFavorite
+                        }
+                      />
+                    </TouchableOpacity>
+                  </S.ContentFavorite>
+                </S.ContentShoeAndFavorite>
                 <S.ContentThumbs>
                   <Image
                     source={{
@@ -159,7 +205,7 @@ const Home = ({navigation}) => {
                     resizeMode="contain"
                   />
                 </S.ContentThumbs>
-                <Text type="h1">R$ {sneaker.retailPrice},00</Text>
+                <Text type="h2">R$ {sneaker.retailPrice},00</Text>
                 <S.ContentButtonBuy>
                   <PrimaryButton
                     onPress={() =>
