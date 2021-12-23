@@ -31,6 +31,7 @@ export const ContentThumbs = styled.View`
 
 export const ContentButtonBuy = styled.View`
   align-self: flex-end;
+  margin-top: ${Theme.spacing.n12};
 `;
 
 export const ContentShoeAndFavorite = styled.View`
