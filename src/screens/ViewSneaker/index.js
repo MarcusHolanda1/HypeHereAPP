@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Image,
   TouchableOpacity,
@@ -7,12 +7,12 @@ import {
   View,
 } from 'react-native';
 import * as S from './styles';
-
+import {FavoritesContext} from '../../contexts/FavoriteContext';
 import {CardSneakers, BackButton, PrimaryButton} from '../../design';
 import {Page, Text, IconGlobal} from '../../design';
 import IMAGES from '../../assets';
 
-const DATA = [
+const dataSize = [
   {
     id: '1',
     size: '36',
@@ -70,6 +70,7 @@ const SizeButton = ({onPress, backgroundColor, item}) => (
 );
 
 const ViewSneaker = ({route, navigation: {goBack}}) => {
+  const {onFavorite, onRemoveFavorite, ifExists} = useContext(FavoritesContext);
   const [selectedSize, setSelectedSize] = useState();
 
   const renderButtonSize = ({item}) => {
@@ -91,6 +92,20 @@ const ViewSneaker = ({route, navigation: {goBack}}) => {
         <CardSneakers>
           <S.ContentHandles>
             <BackButton onPress={() => goBack()} />
+            <TouchableOpacity
+              onPress={() =>
+                ifExists(route.params?.sneakerNav)
+                  ? onRemoveFavorite(route.params?.sneakerNav)
+                  : onFavorite(route.params?.sneakerNav)
+              }>
+              <IconGlobal
+                source={
+                  ifExists(route.params?.sneakerNav)
+                    ? IMAGES.handle.favorite
+                    : IMAGES.handle.setFavorite
+                }
+              />
+            </TouchableOpacity>
           </S.ContentHandles>
 
           <S.ContentImage>
@@ -123,7 +138,7 @@ const ViewSneaker = ({route, navigation: {goBack}}) => {
           ItemSeparatorComponent={() => <View style={{width: 0}} />}
           showsHorizontalScrollIndicator={false}
           horizontal
-          data={DATA}
+          data={dataSize}
           renderItem={renderButtonSize}
           keyExtractor={item => item.id}
           extraData={selectedSize}
