@@ -21,7 +21,7 @@ import {ContextSneakers} from '../../contexts/SneakersContext';
 import {FavoritesContext} from '../../contexts/FavoriteContext';
 import IMAGES from '../../assets';
 
-const DATA = [
+const dataBrands = [
   {
     id: 'Jordan',
     iconBrand: require('../../assets/icons/brands/jordan.png'),
@@ -48,7 +48,7 @@ const DATA = [
   },
 ];
 
-const genders = [
+const dataGenders = [
   {
     id: 'men',
     name: 'Masculino',
@@ -92,14 +92,18 @@ const Home = ({navigation}) => {
 
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
-    if (filtered) setFilteredSneakers(filtered);
+    if (filtered) {
+      setFilteredSneakers(filtered);
+    }
   }, [selectedBrand, sneakers]);
 
   const handleFilterByGender = useCallback(() => {
     const filtered = sneakers.filter(
       e => e.gender === selectedGender && e.brand === selectedBrand,
     );
-    if (filtered) setFilteredSneakers(filtered);
+    if (filtered) {
+      setFilteredSneakers(filtered);
+    }
   }, [selectedBrand, selectedGender, sneakers]);
 
   useEffect(() => {
@@ -190,6 +194,7 @@ const Home = ({navigation}) => {
                         shoe: sneaker.shoe,
                         image: sneaker.media.imageUrl,
                         price: sneaker.retailPrice,
+                        sneakerNav: sneaker,
                       })
                     }
                     background="#75F7FF"
@@ -219,7 +224,7 @@ const Home = ({navigation}) => {
             ItemSeparatorComponent={() => <View style={{width: 0}} />}
             showsHorizontalScrollIndicator={false}
             horizontal
-            data={DATA}
+            data={dataBrands}
             renderItem={renderButtonBrand}
             keyExtractor={item => item.id}
             extraData={selectedBrand}
@@ -231,7 +236,7 @@ const Home = ({navigation}) => {
               ItemSeparatorComponent={() => <View style={{width: 0}} />}
               showsHorizontalScrollIndicator={false}
               vertical
-              data={genders}
+              data={dataGenders}
               renderItem={renderButtonVertical}
               keyExtractor={item => item.id}
               extraData={selectedGender}
