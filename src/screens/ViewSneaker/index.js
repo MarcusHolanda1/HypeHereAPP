@@ -9,10 +9,12 @@ import {
 } from 'react-native';
 import * as S from './styles';
 import {FavoritesContext} from '../../contexts/FavoriteContext';
+import {ContextCart} from '../../contexts/CartContext';
 import {CardSneakers, BackButton, PrimaryButton} from '../../design';
 import {Page, Text, IconGlobal} from '../../design';
 import IMAGES from '../../assets';
 import Toast from 'react-native-toast-message';
+import {useCallback} from 'react';
 
 const dataSize = [
   {
@@ -73,7 +75,9 @@ const SizeButton = ({onPress, backgroundColor, item}) => (
 
 const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
   const {onFavorite, onRemoveFavorite, ifExists} = useContext(FavoritesContext);
+  const {cartSneakers, addCartSneaker} = useContext(ContextCart);
   const [selectedSize, setSelectedSize] = useState();
+  const [sneakerSelected, setSneakerSelected] = useState(route.params);
 
   const renderButtonSize = ({item}) => {
     const backgroundColor = item.id === selectedSize ? '#75F7FF' : '#FAFAFA';
@@ -88,12 +92,17 @@ const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
     );
   };
 
-  const showToast = () => {
+  const showToast = useCallback(() => {
     Toast.show({
       type: 'success',
       text1: 'Sneaker adicionado ao carrinho',
     });
-  };
+  }, []);
+
+  const addToCart = useCallback(() => {
+    addCartSneaker(sneakerSelected);
+    showToast();
+  }, [addCartSneaker, showToast, sneakerSelected]);
 
   return (
     <Page>
@@ -160,7 +169,7 @@ const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
           text="Adicionar ao carrinho"
           width="261px"
           heigth="56px"
-          onPress={showToast}
+          onPress={addToCart}
         />
       </S.ContentButtonBuy>
       <Toast />
