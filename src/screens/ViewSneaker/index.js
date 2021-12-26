@@ -89,7 +89,7 @@ const ViewSneaker = ({route, navigation: {goBack}}) => {
   return (
     <Page>
       <S.ContentCard>
-        <CardSneakers>
+        <CardSneakers width="376px">
           <S.ContentHandles>
             <BackButton onPress={() => goBack()} />
             <TouchableOpacity
