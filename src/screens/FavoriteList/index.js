@@ -40,7 +40,6 @@ const FavoriteLIst = ({route, navigation}) => {
               }>
               <CardSneakers width="185px">
                 <S.ContentHandles>
-                  <Text type="h1">{favoriteList.length}</Text>
                   <Text type="h2">{shoeStringSpace}</Text>
                   <TouchableOpacity
                     onPress={() =>
