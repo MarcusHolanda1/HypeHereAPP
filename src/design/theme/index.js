@@ -45,8 +45,8 @@ const Theme = {
     span: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
-      fontWeight: 'normal',
-      fontSize: '12px',
+      fontWeight: 'bold',
+      fontSize: '10px',
     },
   },
 };
