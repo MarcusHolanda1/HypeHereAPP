@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {View} from 'react-native';
 
-import {H1, H2, P, H1PRICE} from './styles';
+import {H1, H2, P, H1PRICE, SPAN} from './styles';
 
 const Text = ({type, ...rest}) => {
   const render = useCallback(() => {
@@ -14,6 +14,8 @@ const Text = ({type, ...rest}) => {
         return <H2>{rest.children}</H2>;
       case 'p':
         return <P>{rest.children}</P>;
+      case 'span':
+        return <SPAN>{rest.children}</SPAN>;
       default:
         return <View>{rest.children}</View>;
     }
