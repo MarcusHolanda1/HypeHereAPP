@@ -118,8 +118,6 @@ const Home = ({navigation}) => {
     setFilteredSneakers(sneakers);
   }, [sneakers]);
 
-  console.log(favoriteList);
-
   const renderButtonBrand = ({item}) => {
     const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
     return (
@@ -191,6 +189,7 @@ const Home = ({navigation}) => {
                   <DetailsButton
                     onPress={() =>
                       navigation.navigate('ViewSneaker', {
+                        id: sneaker.id,
                         shoe: sneaker.shoe,
                         image: sneaker.media.thumbUrl,
                         price: sneaker.retailPrice,
