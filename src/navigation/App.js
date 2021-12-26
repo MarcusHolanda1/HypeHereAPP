@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import 'react-native-gesture-handler';
 import Home from '../screens/Home';
 import Cart from '../screens/Cart';
@@ -11,6 +11,8 @@ import {FavoritesContextProvider} from '../contexts/FavoriteContext';
 import {IconGlobal} from '../design';
 import IMAGES from '../assets';
 import {createStackNavigator} from '@react-navigation/stack';
+import {SpanIcon} from '../design';
+import {FavoritesContext} from '../contexts/FavoriteContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,6 +25,8 @@ const screenOptions = {
 const Stack = createStackNavigator();
 
 function Main() {
+  const {favoriteList} = useContext(FavoritesContext);
+
   return (
     <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
       <Tab.Screen
@@ -65,18 +69,43 @@ function Main() {
         name="FavoriteList"
         component={FavoriteLIst}
         options={({navigation}) => {
-          return {
-            tabBarIcon: () => (
-              <IconGlobal
-                source={
-                  navigation.getState().index === 2
-                    ? IMAGES.active.favorite
-                    : IMAGES.inactive.favorite
-                }
-              />
-            ),
-            ...screenOptions,
-          };
+          if (favoriteList.length === 0 && navigation.getState().index === 2) {
+            return {
+              tabBarIcon: () => <SpanIcon source={IMAGES.active.favorite} />,
+              ...screenOptions,
+            };
+          } else if (
+            favoriteList.length === 0 &&
+            navigation.getState().index !== 2
+          ) {
+            return {
+              tabBarIcon: () => <SpanIcon source={IMAGES.inactive.favorite} />,
+              ...screenOptions,
+            };
+          } else if (
+            favoriteList.length > 0 &&
+            navigation.getState().index === 2
+          ) {
+            return {
+              tabBarIcon: () => (
+                <SpanIcon
+                  spanText={favoriteList.length}
+                  source={IMAGES.active.favoriteSpan}
+                />
+              ),
+              ...screenOptions,
+            };
+          } else {
+            return {
+              tabBarIcon: () => (
+                <SpanIcon
+                  spanText={favoriteList.length}
+                  source={IMAGES.inactive.favoriteSpan}
+                />
+              ),
+              ...screenOptions,
+            };
+          }
         }}
       />
       <Tab.Screen name="User" component={Home} />
