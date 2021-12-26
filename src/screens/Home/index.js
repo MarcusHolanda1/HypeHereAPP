@@ -14,7 +14,7 @@ import {
   IconGlobal,
   CardSneakers,
   ContainerSneakers,
-  PrimaryButton,
+  DetailsButton,
 } from '../../design';
 import {Text} from '../../design';
 import {ContextSneakers} from '../../contexts/SneakersContext';
@@ -188,7 +188,7 @@ const Home = ({navigation}) => {
                 </S.ContentThumbs>
                 <Text type="h2">R$ {sneaker.retailPrice},00</Text>
                 <S.ContentButtonBuy>
-                  <PrimaryButton
+                  <DetailsButton
                     onPress={() =>
                       navigation.navigate('ViewSneaker', {
                         shoe: sneaker.shoe,
@@ -197,11 +197,6 @@ const Home = ({navigation}) => {
                         sneakerNav: sneaker,
                       })
                     }
-                    background="#75F7FF"
-                    color="#000"
-                    text="Comprar"
-                    width="156px"
-                    heigth="56px"
                   />
                 </S.ContentButtonBuy>
               </CardSneakers>
