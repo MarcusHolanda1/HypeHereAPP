@@ -26,6 +26,14 @@ export const H2 = styled.Text`
   font-size: ${Theme.font.h2.fontSize};
 `;
 
+export const H3 = styled.Text`
+  color: ${Theme.colors.black};
+  font-family: ${Theme.font.h3.fontFamily};
+  font-style: ${Theme.font.h3.fontStyle};
+  font-weight: ${Theme.font.h3.fontWeight};
+  font-size: ${Theme.font.h3.fontSize};
+`;
+
 export const P = styled.Text`
   color: ${Theme.colors.gray};
   font-family: ${Theme.font.p.fontFamily};
