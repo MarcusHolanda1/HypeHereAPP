@@ -1,14 +1,14 @@
 const IMAGES = {
   inactive: {
     cart: require('./icons/tabNavigation/cartInactive.png'),
-    favorite: require('./icons/tabNavigation/favoriteInaactive.png'),
+    favorite: require('./icons/tabNavigation/testInactive.png'),
     favoriteSpan: require('./icons/tabNavigation/favoriteInactiveSpan.png'),
     home: require('./icons/tabNavigation/homeInactive.png'),
     user: require('./icons/tabNavigation/userInactive.png'),
   },
   active: {
     cart: require('./icons/tabNavigation/cartActive.png'),
-    favorite: require('./icons/tabNavigation/favoriteAactive.png'),
+    favorite: require('./icons/tabNavigation/testActive.png'),
     favoriteSpan: require('./icons/tabNavigation/favoriteAactiveSpan.png'),
     home: require('./icons/tabNavigation/homeActive.png'),
     user: require('./icons/tabNavigation/userActive.png'),
