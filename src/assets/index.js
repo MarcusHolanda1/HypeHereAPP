@@ -17,6 +17,7 @@ const IMAGES = {
     handleBack: require('./handle/handleBack.png'),
     favorite: require('./handle/favorite.png'),
     setFavorite: require('./handle/setFavorite.png'),
+    details: require('./handle/details.png'),
   },
   stars: {
     starFull: require('./icons/stars/starFull.png'),
@@ -24,10 +25,6 @@ const IMAGES = {
   },
   logos: {
     logo: require('./icons/logo/logo.png'),
-  },
-  teste: {
-    favoriteDone: require('./icons/test/favoriteDone.png'),
-    favoriteNotDone: require('./icons/test/favoriteNotDone.png'),
   },
 };
 
