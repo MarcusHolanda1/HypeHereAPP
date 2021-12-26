@@ -6,5 +6,6 @@ export const Card = styled.View`
   border-radius: 24px;
   position: relative;
   margin-bottom: ${Theme.spacing.n24};
-  padding: ${Theme.spacing.n32};
+  padding: ${Theme.spacing.n24};
+  width: ${props => props.width};
 `;
