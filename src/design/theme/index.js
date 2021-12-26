@@ -2,6 +2,7 @@ const Theme = {
   colors: {
     background: '#eeee',
     primary: '#75F7FF',
+    secondary: '#DAF3F4',
     black: '#000000',
     white: '#FFFF',
     gray: '#6C6969',
@@ -35,6 +36,12 @@ const Theme = {
       fontStyle: 'normal',
       fontWeight: 'bold',
       fontSize: '18px',
+    },
+    h3: {
+      fontFamily: 'Roboto',
+      fontStyle: 'normal',
+      fontWeight: 'bold',
+      fontSize: '13px',
     },
     p: {
       fontFamily: 'Roboto',
