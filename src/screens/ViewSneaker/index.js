@@ -5,12 +5,14 @@ import {
   StyleSheet,
   FlatList,
   View,
+  Button,
 } from 'react-native';
 import * as S from './styles';
 import {FavoritesContext} from '../../contexts/FavoriteContext';
 import {CardSneakers, BackButton, PrimaryButton} from '../../design';
 import {Page, Text, IconGlobal} from '../../design';
 import IMAGES from '../../assets';
+import Toast from 'react-native-toast-message';
 
 const dataSize = [
   {
@@ -69,7 +71,7 @@ const SizeButton = ({onPress, backgroundColor, item}) => (
   </TouchableOpacity>
 );
 
-const ViewSneaker = ({route, navigation: {goBack}}) => {
+const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
   const {onFavorite, onRemoveFavorite, ifExists} = useContext(FavoritesContext);
   const [selectedSize, setSelectedSize] = useState();
 
@@ -84,6 +86,13 @@ const ViewSneaker = ({route, navigation: {goBack}}) => {
         />
       </>
     );
+  };
+
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Sneaker adicionado ao carrinho',
+    });
   };
 
   return (
@@ -151,8 +160,10 @@ const ViewSneaker = ({route, navigation: {goBack}}) => {
           text="Adicionar ao carrinho"
           width="261px"
           heigth="56px"
+          onPress={showToast}
         />
       </S.ContentButtonBuy>
+      <Toast />
     </Page>
   );
 };
