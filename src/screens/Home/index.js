@@ -157,7 +157,7 @@ const Home = ({navigation}) => {
 
           if (sneaker.media.thumbUrl != null) {
             return (
-              <CardSneakers key={sneaker.id}>
+              <CardSneakers width="297px" key={sneaker.id}>
                 <S.ContentShoeAndFavorite>
                   <Text type="h1">{shoeStringSpace}</Text>
                   <S.ContentFavorite>
@@ -192,7 +192,7 @@ const Home = ({navigation}) => {
                     onPress={() =>
                       navigation.navigate('ViewSneaker', {
                         shoe: sneaker.shoe,
-                        image: sneaker.media.imageUrl,
+                        image: sneaker.media.thumbUrl,
                         price: sneaker.retailPrice,
                         sneakerNav: sneaker,
                       })
