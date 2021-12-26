@@ -33,3 +33,11 @@ export const P = styled.Text`
   font-weight: ${Theme.font.p.fontWeight};
   font-size: ${Theme.font.p.fontSize};
 `;
+
+export const SPAN = styled.Text`
+  color: ${Theme.colors.black};
+  font-family: ${Theme.font.span.fontFamily};
+  font-style: ${Theme.font.span.fontStyle};
+  font-weight: ${Theme.font.span.fontWeight};
+  font-size: ${Theme.font.span.fontSize};
+`;
