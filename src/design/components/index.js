@@ -5,3 +5,4 @@ export {default as SearchBar} from './SearchBar';
 export {default as IconGlobal} from './IconGlobal';
 export {default as CardSneakers} from './CardSneakers';
 export {default as BackButton} from './Buttons/BackButton';
+export {default as SpanIcon} from './SpanIcons';
