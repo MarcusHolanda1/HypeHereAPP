@@ -18,6 +18,9 @@ const IMAGES = {
     favorite: require('./handle/favorite.png'),
     setFavorite: require('./handle/setFavorite.png'),
     details: require('./handle/details.png'),
+    trash: require('./handle/trash.png'),
+    add: require('./handle/add.png'),
+    remove: require('./handle/remove.png'),
   },
   stars: {
     starFull: require('./icons/stars/starFull.png'),
