@@ -13,6 +13,7 @@ import IMAGES from '../assets';
 import {createStackNavigator} from '@react-navigation/stack';
 import {SpanIcon} from '../design';
 import {FavoritesContext} from '../contexts/FavoriteContext';
+import {CartContext} from '../contexts/CartContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -118,28 +119,30 @@ export default function App() {
     <NavigationContainer>
       <SneakersContext>
         <FavoritesContextProvider>
-          <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen
-              name="Home"
-              component={Main}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="Cart"
-              component={Cart}
-              options={{headerShown: false}}
-            />
-            <Stack.Screen
-              name="ViewSneaker"
-              options={{headerShown: false}}
-              component={ViewSneaker}
-            />
-            <Stack.Screen
-              name="FavoriteList"
-              options={{headerShown: false}}
-              component={FavoriteLIst}
-            />
-          </Stack.Navigator>
+          <CartContext>
+            <Stack.Navigator initialRouteName="Home">
+              <Stack.Screen
+                name="Home"
+                component={Main}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="Cart"
+                component={Cart}
+                options={{headerShown: false}}
+              />
+              <Stack.Screen
+                name="ViewSneaker"
+                options={{headerShown: false}}
+                component={ViewSneaker}
+              />
+              <Stack.Screen
+                name="FavoriteList"
+                options={{headerShown: false}}
+                component={FavoriteLIst}
+              />
+            </Stack.Navigator>
+          </CartContext>
         </FavoritesContextProvider>
       </SneakersContext>
     </NavigationContainer>
