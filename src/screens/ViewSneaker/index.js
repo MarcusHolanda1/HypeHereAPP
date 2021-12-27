@@ -172,7 +172,7 @@ const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
           onPress={addToCart}
         />
       </S.ContentButtonBuy>
-      <Toast />
+      <Toast onPress={() => navigation.navigate('CartTab')} />
     </Page>
   );
 };
