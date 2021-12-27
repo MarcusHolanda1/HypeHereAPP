@@ -14,6 +14,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {SpanIcon} from '../design';
 import {FavoritesContext} from '../contexts/FavoriteContext';
 import {CartContext} from '../contexts/CartContext';
+import {ContextCart} from '../contexts/CartContext';
 
 const Tab = createBottomTabNavigator();
 
@@ -27,11 +28,12 @@ const Stack = createStackNavigator();
 
 function Main() {
   const {favoriteList} = useContext(FavoritesContext);
+  const {cartSneakers} = useContext(ContextCart);
 
   return (
     <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
       <Tab.Screen
-        name="Home"
+        name="HomeTab"
         component={Home}
         options={({navigation}) => {
           return {
@@ -49,25 +51,50 @@ function Main() {
         }}
       />
       <Tab.Screen
-        name="Cart"
+        name="CartTab"
         component={Cart}
         options={({navigation}) => {
-          return {
-            tabBarIcon: () => (
-              <IconGlobal
-                source={
-                  navigation.getState().index === 1
-                    ? IMAGES.active.cart
-                    : IMAGES.inactive.cart
-                }
-              />
-            ),
-            ...screenOptions,
-          };
+          if (cartSneakers.length === 0 && navigation.getState().index === 1) {
+            return {
+              tabBarIcon: () => <SpanIcon source={IMAGES.active.cart} />,
+              ...screenOptions,
+            };
+          } else if (
+            cartSneakers.length === 0 &&
+            navigation.getState().index !== 1
+          ) {
+            return {
+              tabBarIcon: () => <SpanIcon source={IMAGES.inactive.cart} />,
+              ...screenOptions,
+            };
+          } else if (
+            cartSneakers.length > 0 &&
+            navigation.getState().index === 1
+          ) {
+            return {
+              tabBarIcon: () => (
+                <SpanIcon
+                  spanText={cartSneakers.length}
+                  source={IMAGES.active.cartSpan}
+                />
+              ),
+              ...screenOptions,
+            };
+          } else {
+            return {
+              tabBarIcon: () => (
+                <SpanIcon
+                  spanText={cartSneakers.length}
+                  source={IMAGES.inactive.cartSpan}
+                />
+              ),
+              ...screenOptions,
+            };
+          }
         }}
       />
       <Tab.Screen
-        name="FavoriteList"
+        name="FavoriteListTab"
         component={FavoriteLIst}
         options={({navigation}) => {
           if (favoriteList.length === 0 && navigation.getState().index === 2) {
@@ -109,7 +136,7 @@ function Main() {
           }
         }}
       />
-      <Tab.Screen name="User" component={Home} />
+      <Tab.Screen name="UserTab" component={Home} />
     </Tab.Navigator>
   );
 }
