@@ -3,9 +3,9 @@ import * as S from './styles';
 import {IconGlobal} from '../..';
 import IMAGES from '../../../../assets';
 
-const TrashButton = ({children}) => {
+const TrashButton = ({children, onPress}) => {
   return (
-    <S.WrapButton>
+    <S.WrapButton onPress={onPress}>
       <S.ContentIcon>
         <IconGlobal source={IMAGES.handle.trash} />
       </S.ContentIcon>

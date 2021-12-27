@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 import Theme from '../../../theme';
 
-export const WrapButton = styled.View`
+export const WrapButton = styled.TouchableOpacity`
   background-color: ${Theme.colors.secondary};
   width: 66px;
   height: 153px;
