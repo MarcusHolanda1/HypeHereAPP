@@ -6,6 +6,7 @@ import {
   View,
   Image,
 } from 'react-native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
 import {
@@ -83,7 +84,7 @@ const ButtonVertical = ({onPress, backgroundColor, item}) => (
 );
 
 const Home = ({navigation}) => {
-  const {sneakers, setSneakers} = useContext(ContextSneakers);
+  const {sneakers, setSneakers, isLoading} = useContext(ContextSneakers);
   const {onFavorite, onRemoveFavorite, ifExists, favoriteList} =
     useContext(FavoritesContext);
   const [selectedBrand, setSelectedBrand] = useState();
@@ -146,64 +147,88 @@ const Home = ({navigation}) => {
   };
 
   const renderContainerSneakers = () => {
-    return (
-      <ContainerSneakers>
-        {filteredSneakers.map(sneaker => {
-          let shoeString = sneaker.shoe;
-          let showStringSplit = shoeString.split(' ', 3);
-          let shoeStringSpace = showStringSplit.join(' ');
+    if (isLoading === false) {
+      return (
+        <SkeletonPlaceholder backgroundColor="#E0E0E0">
+          <SkeletonPlaceholder.Item flexDirection="column">
+            <SkeletonPlaceholder.Item>
+              <SkeletonPlaceholder.Item
+                width={297}
+                height={350}
+                borderRadius={24}
+                marginBottom={24}
+              />
+            </SkeletonPlaceholder.Item>
+            <SkeletonPlaceholder.Item>
+              <SkeletonPlaceholder.Item
+                width={297}
+                height={400}
+                borderRadius={24}
+              />
+            </SkeletonPlaceholder.Item>
+          </SkeletonPlaceholder.Item>
+        </SkeletonPlaceholder>
+      );
+    } else {
+      return (
+        <ContainerSneakers>
+          {filteredSneakers.map(sneaker => {
+            let shoeString = sneaker.shoe;
+            let showStringSplit = shoeString.split(' ', 3);
+            let shoeStringSpace = showStringSplit.join(' ');
 
-          if (sneaker.media.thumbUrl != null) {
-            return (
-              <CardSneakers width="297px" key={sneaker.id}>
-                <S.ContentShoeAndFavorite>
-                  <Text type="h1">{shoeStringSpace}</Text>
-                  <S.ContentFavorite>
-                    <TouchableOpacity
-                      onPress={() =>
-                        ifExists(sneaker)
-                          ? onRemoveFavorite(sneaker)
-                          : onFavorite(sneaker)
-                      }>
-                      <IconGlobal
-                        source={
+            if (sneaker.media.thumbUrl != null || undefined) {
+              return (
+                <CardSneakers width="297px" key={sneaker.id}>
+                  <S.ContentShoeAndFavorite>
+                    <Text type="h1">{shoeStringSpace}</Text>
+                    <S.ContentFavorite>
+                      <TouchableOpacity
+                        onPress={() =>
                           ifExists(sneaker)
-                            ? IMAGES.handle.favorite
-                            : IMAGES.handle.setFavorite
-                        }
-                      />
-                    </TouchableOpacity>
-                  </S.ContentFavorite>
-                </S.ContentShoeAndFavorite>
-                <S.ContentThumbs>
-                  <Image
-                    source={{
-                      uri: sneaker.media.thumbUrl,
-                    }}
-                    style={{width: 220, height: 140}}
-                    resizeMode="contain"
-                  />
-                </S.ContentThumbs>
-                <Text type="h2">R$ {sneaker.retailPrice},00</Text>
-                <S.ContentButtonBuy>
-                  <DetailsButton
-                    onPress={() =>
-                      navigation.navigate('ViewSneaker', {
-                        id: sneaker.id,
-                        shoe: sneaker.shoe,
-                        image: sneaker.media.thumbUrl,
-                        price: sneaker.retailPrice,
-                        sneakerNav: sneaker,
-                      })
-                    }
-                  />
-                </S.ContentButtonBuy>
-              </CardSneakers>
-            );
-          }
-        })}
-      </ContainerSneakers>
-    );
+                            ? onRemoveFavorite(sneaker)
+                            : onFavorite(sneaker)
+                        }>
+                        <IconGlobal
+                          source={
+                            ifExists(sneaker)
+                              ? IMAGES.handle.favorite
+                              : IMAGES.handle.setFavorite
+                          }
+                        />
+                      </TouchableOpacity>
+                    </S.ContentFavorite>
+                  </S.ContentShoeAndFavorite>
+                  <S.ContentThumbs>
+                    <Image
+                      source={{
+                        uri: sneaker.media.thumbUrl,
+                      }}
+                      style={{width: 220, height: 140}}
+                      resizeMode="contain"
+                    />
+                  </S.ContentThumbs>
+                  <Text type="h2">R$ {sneaker.retailPrice},00</Text>
+                  <S.ContentButtonBuy>
+                    <DetailsButton
+                      onPress={() =>
+                        navigation.navigate('ViewSneaker', {
+                          id: sneaker.id,
+                          shoe: sneaker.shoe,
+                          image: sneaker.media.thumbUrl,
+                          price: sneaker.retailPrice,
+                          sneakerNav: sneaker,
+                        })
+                      }
+                    />
+                  </S.ContentButtonBuy>
+                </CardSneakers>
+              );
+            }
+          })}
+        </ContainerSneakers>
+      );
+    }
   };
 
   return (
