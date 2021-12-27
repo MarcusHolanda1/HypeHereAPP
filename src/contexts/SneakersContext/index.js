@@ -5,12 +5,15 @@ export const ContextSneakers = createContext();
 
 export const SneakersContext = ({children}) => {
   const [sneakers, setSneakers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getAPI = useCallback(async () => {
-    request.get().then(({data}) => {
+    await request.get().then(({data}) => {
       setSneakers(data.results);
     });
+    setIsLoading(true);
   }, []);
+  console.log(isLoading);
 
   useEffect(() => {
     getAPI();
@@ -21,6 +24,7 @@ export const SneakersContext = ({children}) => {
       value={{
         sneakers,
         setSneakers,
+        isLoading,
       }}>
       {children}
     </ContextSneakers.Provider>
