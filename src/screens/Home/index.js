@@ -92,24 +92,6 @@ const Home = ({navigation}) => {
   const [selectedGender, setSelectedGender] = useState();
 
   const [search, setSearch] = useState('');
-  const [masterDataSource, setMasterDataSource] = useState([]);
-
-  // const searchFilterFunction = text => {
-  //   if (text) {
-  //     const newData = filteredSneakers.filter(function (item) {
-  //       const itemData = item.shoe ? item.shoe.toUpperCase() : ''.toUpperCase();
-  //       const textData = text.toUpperCase();
-  //       return itemData.indexOf(textData) > -1;
-  //     });
-  //     setFilteredSneakers(newData);
-  //     setSearch(text);
-  //     console.log(newData);
-  //   } else {
-  //     setFilteredSneakers(filteredSneakers);
-  //     console.log('filter aqui', filteredSneakers);
-  //     setSearch(text);
-  //   }
-  // };
 
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
@@ -152,14 +134,18 @@ const Home = ({navigation}) => {
         setFilteredSneakers(newData);
         setSearch(text);
         console.log(newData);
+      } else if (selectedBrand) {
+        console.log('filtrou');
+        handleFilterByBrand(filteredSneakers);
+        setSearch(text);
       } else {
-        handleFilterByBrand(sneakers);
+        console.log('não filtrou');
+        setFilteredSneakers(sneakers);
         setSearch(text);
       }
     },
-    [handleFilterByBrand, sneakers],
+    [filteredSneakers, handleFilterByBrand, selectedBrand, sneakers],
   );
-  console.log('filter aqui', filteredSneakers);
 
   const renderButtonBrand = ({item}) => {
     const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
@@ -196,7 +182,7 @@ const Home = ({navigation}) => {
             <SkeletonPlaceholder.Item>
               <SkeletonPlaceholder.Item
                 width={297}
-                height={350}
+                height={370}
                 borderRadius={24}
                 marginBottom={24}
               />
