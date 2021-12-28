@@ -91,6 +91,26 @@ const Home = ({navigation}) => {
   const [filteredSneakers, setFilteredSneakers] = useState([]);
   const [selectedGender, setSelectedGender] = useState();
 
+  const [search, setSearch] = useState('');
+  const [masterDataSource, setMasterDataSource] = useState([]);
+
+  // const searchFilterFunction = text => {
+  //   if (text) {
+  //     const newData = filteredSneakers.filter(function (item) {
+  //       const itemData = item.shoe ? item.shoe.toUpperCase() : ''.toUpperCase();
+  //       const textData = text.toUpperCase();
+  //       return itemData.indexOf(textData) > -1;
+  //     });
+  //     setFilteredSneakers(newData);
+  //     setSearch(text);
+  //     console.log(newData);
+  //   } else {
+  //     setFilteredSneakers(filteredSneakers);
+  //     console.log('filter aqui', filteredSneakers);
+  //     setSearch(text);
+  //   }
+  // };
+
   const handleFilterByBrand = useCallback(() => {
     const filtered = sneakers.filter(e => e.brand === selectedBrand);
     if (filtered) {
@@ -118,6 +138,28 @@ const Home = ({navigation}) => {
   useEffect(() => {
     setFilteredSneakers(sneakers);
   }, [sneakers]);
+
+  const searchFilterFunction = useCallback(
+    text => {
+      if (text) {
+        const newData = sneakers.filter(function (item) {
+          const itemData = item.shoe
+            ? item.shoe.toUpperCase()
+            : ''.toUpperCase();
+          const textData = text.toUpperCase();
+          return itemData.indexOf(textData) > -1;
+        });
+        setFilteredSneakers(newData);
+        setSearch(text);
+        console.log(newData);
+      } else {
+        handleFilterByBrand(sneakers);
+        setSearch(text);
+      }
+    },
+    [handleFilterByBrand, sneakers],
+  );
+  console.log('filter aqui', filteredSneakers);
 
   const renderButtonBrand = ({item}) => {
     const backgroundColor = item.id === selectedBrand ? '#75F7FF' : '#FAFAFA';
@@ -236,7 +278,7 @@ const Home = ({navigation}) => {
       <Page>
         <S.ContentHeader>
           <Logo width={150} height={35} />
-          <SearchBar />
+          <SearchBar onChange={text => searchFilterFunction(text)} />
         </S.ContentHeader>
         <S.ContainerBrands>
           <FlatList
