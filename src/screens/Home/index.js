@@ -135,11 +135,9 @@ const Home = ({navigation}) => {
         setSearch(text);
         console.log(newData);
       } else if (selectedBrand) {
-        console.log('filtrou');
         handleFilterByBrand(filteredSneakers);
         setSearch(text);
       } else {
-        console.log('não filtrou');
         setFilteredSneakers(sneakers);
         setSearch(text);
       }

@@ -26,7 +26,7 @@ export const ContentTextGenders = styled.SafeAreaView`
 
 export const ContentThumbs = styled.View`
   margin-top: ${Theme.spacing.n24};
-  margin-bottom: ${Theme.spacing.n24};
+  margin-bottom: ${Theme.spacing.n40};
 `;
 
 export const ContentButtonBuy = styled.View`
