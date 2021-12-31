@@ -4,6 +4,7 @@ import Home from '../screens/Home';
 import Cart from '../screens/Cart';
 import ViewSneaker from '../screens/ViewSneaker';
 import FavoriteLIst from '../screens/FavoriteList';
+import User from '../screens/User';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {SneakersContext} from '../contexts/SneakersContext';
@@ -136,7 +137,7 @@ function Main() {
           }
         }}
       />
-      <Tab.Screen name="UserTab" component={Home} />
+      <Tab.Screen name="UserTab" component={User} />
     </Tab.Navigator>
   );
 }
