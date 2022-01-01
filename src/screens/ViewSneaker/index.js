@@ -11,7 +11,7 @@ import * as S from './styles';
 import {FavoritesContext} from '../../contexts/FavoriteContext';
 import {ContextCart} from '../../contexts/CartContext';
 import {CardSneakers, BackButton, PrimaryButton} from '../../design';
-import {Page, Text, IconGlobal} from '../../design';
+import {FavoriteListStructure, Text, IconGlobal} from '../../design';
 import IMAGES from '../../assets';
 import Toast from 'react-native-toast-message';
 import {useCallback} from 'react';
@@ -105,7 +105,7 @@ const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
   }, [addCartSneaker, showToast, sneakerSelected]);
 
   return (
-    <Page>
+    <FavoriteListStructure>
       <S.ContentCard>
         <CardSneakers width="376px">
           <S.ContentHandles>
@@ -173,7 +173,7 @@ const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
         />
       </S.ContentButtonBuy>
       <Toast onPress={() => navigation.navigate('CartTab')} />
-    </Page>
+    </FavoriteListStructure>
   );
 };
 const styles = StyleSheet.create({
