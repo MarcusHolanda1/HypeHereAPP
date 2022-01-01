@@ -52,7 +52,7 @@ const Theme = {
     span: {
       fontFamily: 'Roboto',
       fontStyle: 'normal',
-      fontWeight: 'bold',
+      fontWeight: '300',
       fontSize: '10px',
     },
   },
