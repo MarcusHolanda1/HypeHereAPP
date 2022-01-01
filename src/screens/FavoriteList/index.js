@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Image, TouchableOpacity} from 'react-native';
+import {Image, TouchableOpacity, ScrollView} from 'react-native';
 import {
   FavoriteListStructure,
   IconGlobal,
@@ -21,47 +21,49 @@ const FavoriteLIst = ({route, navigation}) => {
       <S.ContentTitle>
         <Text type="h1">Meus favoritos</Text>
       </S.ContentTitle>
-      <S.ContentCards>
-        {favoriteList.map(favorite => {
-          let shoeString = favorite.shoe;
-          let showStringSplit = shoeString.split(' ', 1);
-          let shoeStringSpace = showStringSplit.join(' ');
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <S.ContentCards>
+          {favoriteList.map(favorite => {
+            let shoeString = favorite.shoe;
+            let showStringSplit = shoeString.split(' ', 1);
+            let shoeStringSpace = showStringSplit.join(' ');
 
-          return (
-            <TouchableOpacity
-              key={favorite.id}
-              onPress={() =>
-                navigation.navigate('ViewSneaker', {
-                  shoe: favorite.shoe,
-                  image: favorite.media.thumbUrl,
-                  price: favorite.retailPrice,
-                  sneakerNav: favorite,
-                })
-              }>
-              <CardSneakers width="185px">
-                <S.ContentHandles>
-                  <Text type="h2">{shoeStringSpace}</Text>
-                  <TouchableOpacity
-                    onPress={() =>
-                      ifExists(favorite)
-                        ? onRemoveFavorite(favorite)
-                        : onFavorite(favorite)
-                    }>
-                    <IconGlobal source={IMAGES.handle.favorite} />
-                  </TouchableOpacity>
-                </S.ContentHandles>
-                <Image
-                  source={{
-                    uri: favorite.media.thumbUrl,
-                  }}
-                  style={{width: 120, height: 100}}
-                  resizeMode="contain"
-                />
-              </CardSneakers>
-            </TouchableOpacity>
-          );
-        })}
-      </S.ContentCards>
+            return (
+              <TouchableOpacity
+                key={favorite.id}
+                onPress={() =>
+                  navigation.navigate('ViewSneaker', {
+                    shoe: favorite.shoe,
+                    image: favorite.media.thumbUrl,
+                    price: favorite.retailPrice,
+                    sneakerNav: favorite,
+                  })
+                }>
+                <CardSneakers width="185px">
+                  <S.ContentHandles>
+                    <Text type="h2">{shoeStringSpace}</Text>
+                    <TouchableOpacity
+                      onPress={() =>
+                        ifExists(favorite)
+                          ? onRemoveFavorite(favorite)
+                          : onFavorite(favorite)
+                      }>
+                      <IconGlobal source={IMAGES.handle.favorite} />
+                    </TouchableOpacity>
+                  </S.ContentHandles>
+                  <Image
+                    source={{
+                      uri: favorite.media.thumbUrl,
+                    }}
+                    style={{width: 120, height: 100}}
+                    resizeMode="contain"
+                  />
+                </CardSneakers>
+              </TouchableOpacity>
+            );
+          })}
+        </S.ContentCards>
+      </ScrollView>
     </FavoriteListStructure>
   );
 };
