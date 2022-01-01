@@ -1,9 +1,13 @@
 import React, {createContext, useState, useCallback} from 'react';
+import {useEffect} from 'react';
 
 export const ContextCart = createContext();
 
 export const CartContext = ({children}) => {
   const [cartSneakers, setCartSneakers] = useState([]);
+  const [subTotalSneakers, setSubTotalSneakers] = useState(0);
+  const [totalSneakers, setTotalSneakers] = useState(0);
+  const [freight, setFreight] = useState(0);
 
   const addCartSneaker = useCallback(
     item => {
@@ -46,6 +50,36 @@ export const CartContext = ({children}) => {
     [cartSneakers],
   );
 
+  const calculateSubTotalSneakers = useCallback(() => {
+    let subtotal = 0;
+    cartSneakers.map(sneakerAdd => {
+      subtotal += sneakerAdd.price * sneakerAdd.qty;
+      return sneakerAdd;
+    });
+    setSubTotalSneakers(subtotal);
+  }, [cartSneakers]);
+
+  const calculateTotalSneakers = useCallback(() => {
+    let totalValue = 0;
+    for (const eachSneaker of cartSneakers) {
+      totalValue += eachSneaker.price;
+    }
+    setTotalSneakers(totalValue);
+    if (totalValue > 0) {
+      setFreight(10);
+    } else {
+      setFreight(0);
+    }
+  }, [cartSneakers]);
+
+  useEffect(() => {
+    calculateTotalSneakers();
+  }, [calculateTotalSneakers]);
+
+  useEffect(() => {
+    calculateSubTotalSneakers();
+  }, [calculateSubTotalSneakers]);
+
   return (
     <ContextCart.Provider
       value={{
@@ -53,6 +87,9 @@ export const CartContext = ({children}) => {
         addCartSneaker,
         removeSneakerCart,
         trashSneakerCart,
+        totalSneakers,
+        subTotalSneakers,
+        freight,
       }}>
       {children}
     </ContextCart.Provider>
