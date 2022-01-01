@@ -1,9 +1,7 @@
 import styled from 'styled-components/native';
 import Theme from '../../design/theme';
 
-export const ContentCard = styled.View`
-  padding-right: ${Theme.spacing.n16};
-`;
+export const ContentCard = styled.View``;
 
 export const ContentHandles = styled.View`
   flex-direction: row;
