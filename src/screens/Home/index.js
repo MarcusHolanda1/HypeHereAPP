@@ -205,7 +205,7 @@ const Home = ({navigation}) => {
 
             if (sneaker.media.thumbUrl != null || undefined) {
               return (
-                <CardSneakers width="297px" key={sneaker.id}>
+                <CardSneakers key={sneaker.id}>
                   <S.ContentShoeAndFavorite>
                     <Text type="h1">{shoeStringSpace}</Text>
                     <S.ContentFavorite>
