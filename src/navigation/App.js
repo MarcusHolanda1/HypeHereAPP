@@ -137,7 +137,24 @@ function Main() {
           }
         }}
       />
-      <Tab.Screen name="UserTab" component={User} />
+       <Tab.Screen
+        name="UserTab"
+        component={User}
+        options={({navigation}) => {
+          return {
+            tabBarIcon: () => (
+              <IconGlobal
+                source={
+                  navigation.getState().index === 3
+                    ? IMAGES.active.user
+                    : IMAGES.inactive.user
+                }
+              />
+            ),
+            ...screenOptions,
+          };
+        }}
+      />
     </Tab.Navigator>
   );
 }
