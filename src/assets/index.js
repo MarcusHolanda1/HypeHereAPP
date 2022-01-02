@@ -31,6 +31,9 @@ const IMAGES = {
   logos: {
     logo: require('./icons/logo/logo.png'),
   },
+  images: {
+    notFavorites: require('./images/notFavorites.png'),
+  },
 };
 
 export default IMAGES;
