@@ -33,6 +33,8 @@ const IMAGES = {
   },
   images: {
     notFavorites: require('./images/notFavorites.png'),
+    cartEmpty: require('./images/cartEmpty.png'),
+    bad: require('./images/bad.png'),
   },
 };
 
