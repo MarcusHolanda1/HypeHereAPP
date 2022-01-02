@@ -23,7 +23,7 @@ const FavoriteLIst = ({route, navigation}) => {
           <Image source={IMAGES.images.notFavorites} />
           <S.ContentTextNotFavorites>
             <Text type="p">
-              Você ainda não adicionou neenhum sneaker como favorito
+              Você ainda não adicionou nenhum sneaker como favorito
             </Text>
           </S.ContentTextNotFavorites>
           <PrimaryButton
