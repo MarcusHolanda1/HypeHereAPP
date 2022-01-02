@@ -186,7 +186,7 @@ const Home = ({navigation}) => {
             </SkeletonPlaceholder.Item>
             <SkeletonPlaceholder.Item>
               <SkeletonPlaceholder.Item
-                width={297}
+                width={275}
                 height={400}
                 borderRadius={24}
               />
@@ -206,7 +206,7 @@ const Home = ({navigation}) => {
               return (
                 <CardSneakers key={sneaker.id}>
                   <S.ContentShoeAndFavorite>
-                    <Text type="h1">{shoeStringSpace}</Text>
+                    <Text type="h2">{shoeStringSpace}</Text>
                     <S.ContentFavorite>
                       <TouchableOpacity
                         onPress={() =>
@@ -229,11 +229,16 @@ const Home = ({navigation}) => {
                       source={{
                         uri: sneaker.media.thumbUrl,
                       }}
-                      style={{width: 220, height: 140}}
+                      style={{
+                        minWidth: '20%',
+                        maxWidth: 220,
+                        minHeight: '10%',
+                        height: 140,
+                      }}
                       resizeMode="contain"
                     />
                   </S.ContentThumbs>
-                  <Text type="h2">R$ {sneaker.retailPrice},00</Text>
+                  <Text type="h3">R$ {sneaker.retailPrice},00</Text>
                   <S.ContentButtonBuy>
                     <DetailsButton
                       onPress={() =>
