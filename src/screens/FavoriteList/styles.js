@@ -35,4 +35,5 @@ export const ContainerNotFavorites = styled.View`
 export const ContentTextNotFavorites = styled.View`
   margin-top: ${Theme.spacing.n12};
   margin-bottom: ${Theme.spacing.n16};
+  padding-right: ${Theme.spacing.n8};
 `;
