@@ -133,7 +133,6 @@ const Home = ({navigation}) => {
         });
         setFilteredSneakers(newData);
         setSearch(text);
-        console.log(newData);
       } else if (selectedBrand) {
         handleFilterByBrand(filteredSneakers);
         setSearch(text);
@@ -252,7 +251,21 @@ const Home = ({navigation}) => {
               );
             }
           })}
+          {renderIfNotExistSneaker()}
         </ContainerSneakers>
+      );
+    }
+  };
+
+  const renderIfNotExistSneaker = () => {
+    if (filteredSneakers.length === 0) {
+      return (
+        <S.ContentIfNotExistSneaker>
+          <Image source={IMAGES.images.bad} />
+          <S.ContentTextIfNotExistSneaker>
+            <Text type="p">Ainda não há itens disponíveis aqui</Text>
+          </S.ContentTextIfNotExistSneaker>
+        </S.ContentIfNotExistSneaker>
       );
     }
   };

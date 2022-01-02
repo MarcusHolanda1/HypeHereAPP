@@ -42,3 +42,13 @@ export const ContentShoeAndFavorite = styled.View`
 export const ContentFavorite = styled.View`
   top: 5px;
 `;
+
+export const ContentIfNotExistSneaker = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-top: ${Theme.spacing.n24};
+`;
+
+export const ContentTextIfNotExistSneaker = styled.View`
+  margin-top: ${Theme.spacing.n16};
+`;
