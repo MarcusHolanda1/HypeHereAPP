@@ -179,7 +179,7 @@ const Home = ({navigation}) => {
           <SkeletonPlaceholder.Item flexDirection="column">
             <SkeletonPlaceholder.Item>
               <SkeletonPlaceholder.Item
-                width={297}
+                width={275}
                 height={370}
                 borderRadius={24}
                 marginBottom={24}
