@@ -1,4 +1,5 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
+import {StatusBar} from 'react-native';
 import 'react-native-gesture-handler';
 import Home from '../screens/Home';
 import Cart from '../screens/Cart';
@@ -16,6 +17,7 @@ import {SpanIcon} from '../design';
 import {FavoritesContext} from '../contexts/FavoriteContext';
 import {CartContext} from '../contexts/CartContext';
 import {ContextCart} from '../contexts/CartContext';
+import SplashCreen from 'react-native-splash-screen';
 
 const Tab = createBottomTabNavigator();
 
@@ -30,6 +32,10 @@ const Stack = createStackNavigator();
 function Main() {
   const {favoriteList} = useContext(FavoritesContext);
   const {cartSneakers} = useContext(ContextCart);
+
+  useEffect(() => {
+    SplashCreen.hide();
+  });
 
   return (
     <Tab.Navigator initialRouteName="Home" screenOptions={{headerShown: false}}>
@@ -137,7 +143,7 @@ function Main() {
           }
         }}
       />
-       <Tab.Screen
+      <Tab.Screen
         name="UserTab"
         component={User}
         options={({navigation}) => {
@@ -165,6 +171,7 @@ export default function App() {
       <SneakersContext>
         <FavoritesContextProvider>
           <CartContext>
+            <StatusBar backgroundColor="#eeee" barStyle="light-content" />
             <Stack.Navigator initialRouteName="Home">
               <Stack.Screen
                 name="Home"
