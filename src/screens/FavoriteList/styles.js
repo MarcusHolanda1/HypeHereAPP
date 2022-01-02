@@ -29,13 +29,11 @@ export const ContentedCard = styled.View`
 export const ContainerNotFavorites = styled.View`
   justify-content: center;
   align-items: center;
-  right: -20px;
 `;
 
 export const ContentTextNotFavorites = styled.View`
   margin-top: ${Theme.spacing.n12};
   margin-bottom: ${Theme.spacing.n16};
-  padding-right: ${Theme.spacing.n8};
 `;
 
 export const ContentPrimaryButtonNotFavorites = styled.View`
