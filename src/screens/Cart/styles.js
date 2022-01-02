@@ -91,3 +91,16 @@ export const ContentFinishBuyDataTotal = styled.View`
   border-top-width: 1px;
   border-color: #cdcdcd;
 `;
+
+export const ContainerCartEmpty = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-top: ${Theme.spacing.n32};
+`;
+
+export const ContentTextCartEmpty = styled.View`
+  justify-content: center;
+  align-items: center;
+  margin-top: ${Theme.spacing.n24};
+  margin-bottom: ${Theme.spacing.n24};
+`;
