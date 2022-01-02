@@ -13,7 +13,6 @@ export const SneakersContext = ({children}) => {
     });
     setIsLoading(true);
   }, []);
-  console.log(isLoading);
 
   useEffect(() => {
     getAPI();
