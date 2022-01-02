@@ -5,6 +5,7 @@ import {
   IconGlobal,
   Text,
   CardSneakers,
+  PrimaryButton,
 } from '../../design';
 import * as S from './styles';
 import Logo from '../../assets/icons/logo/HYPEHERE.svg';
@@ -14,6 +15,29 @@ import {FavoritesContext} from '../../contexts/FavoriteContext';
 const FavoriteLIst = ({route, navigation}) => {
   const {onFavorite, onRemoveFavorite, ifExists, favoriteList} =
     useContext(FavoritesContext);
+
+  const renderIfNotFavorites = () => {
+    if (favoriteList.length === 0) {
+      return (
+        <S.ContainerNotFavorites>
+          <Image source={IMAGES.images.notFavorites} />
+          <S.ContentTextNotFavorites>
+            <Text type="p">
+              Você ainda não adicionou neenhum sneaker como favorito
+            </Text>
+          </S.ContentTextNotFavorites>
+          <PrimaryButton
+            background="#75F7FF"
+            color="#000"
+            text="Conferir Sneakers"
+            width="261px"
+            heigth="56px"
+            onPress={() => navigation.navigate('HomeTab')}
+          />
+        </S.ContainerNotFavorites>
+      );
+    }
+  };
 
   return (
     <FavoriteListStructure>
@@ -63,6 +87,7 @@ const FavoriteLIst = ({route, navigation}) => {
             );
           })}
         </S.ContentCards>
+        {renderIfNotFavorites()}
       </ScrollView>
     </FavoriteListStructure>
   );
