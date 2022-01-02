@@ -25,3 +25,14 @@ export const ContentedCard = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
 `;
+
+export const ContainerNotFavorites = styled.View`
+  justify-content: center;
+  align-items: center;
+  right: -10px;
+`;
+
+export const ContentTextNotFavorites = styled.View`
+  margin-top: ${Theme.spacing.n12};
+  margin-bottom: ${Theme.spacing.n16};
+`;
