@@ -62,7 +62,7 @@ const Cart = ({route, navigation}) => {
                       </S.ContentAddAndRemoveButton>
                       <S.ContentPriceCard>
                         <Text type="span">
-                          Preço: R$: {subTotalSneakers}, 00
+                          Preço: R$: {cartSneaker.price}, 00
                         </Text>
                       </S.ContentPriceCard>
                     </S.ContentShoe>
@@ -79,7 +79,7 @@ const Cart = ({route, navigation}) => {
           <S.ContainerFinishBuyData>
             <S.ContentFinishBuyDataSubTotal>
               <Text type="h3">Sub Total</Text>
-              <Text type="h2">R$ {totalSneakers}, 00</Text>
+              <Text type="h2">R$ {subTotalSneakers}, 00</Text>
             </S.ContentFinishBuyDataSubTotal>
             <S.ContentFinishBuyDataFreight>
               <Text type="h3">Frete</Text>
