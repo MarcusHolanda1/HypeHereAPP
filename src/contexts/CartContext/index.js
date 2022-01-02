@@ -61,16 +61,14 @@ export const CartContext = ({children}) => {
 
   const calculateTotalSneakers = useCallback(() => {
     let totalValue = 0;
-    for (const eachSneaker of cartSneakers) {
-      totalValue += eachSneaker.price;
-    }
+    totalValue = subTotalSneakers + freight;
     setTotalSneakers(totalValue);
     if (totalValue > 0) {
       setFreight(10);
     } else {
       setFreight(0);
     }
-  }, [cartSneakers]);
+  }, [freight, subTotalSneakers]);
 
   useEffect(() => {
     calculateTotalSneakers();
