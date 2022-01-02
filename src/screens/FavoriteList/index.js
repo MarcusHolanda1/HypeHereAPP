@@ -19,22 +19,26 @@ const FavoriteLIst = ({route, navigation}) => {
   const renderIfNotFavorites = () => {
     if (favoriteList.length === 0) {
       return (
-        <S.ContainerNotFavorites>
-          <Image source={IMAGES.images.notFavorites} />
-          <S.ContentTextNotFavorites>
-            <Text type="p">
-              Você ainda não adicionou nenhum sneaker como favorito
-            </Text>
-          </S.ContentTextNotFavorites>
-          <PrimaryButton
-            background="#75F7FF"
-            color="#000"
-            text="Conferir Sneakers"
-            width="261px"
-            heigth="56px"
-            onPress={() => navigation.navigate('HomeTab')}
-          />
-        </S.ContainerNotFavorites>
+        <>
+          <S.ContainerNotFavorites>
+            <Image source={IMAGES.images.notFavorites} />
+            <S.ContentTextNotFavorites>
+              <Text type="p">
+                Você ainda não adicionou nenhum sneaker como favorito
+              </Text>
+            </S.ContentTextNotFavorites>
+          </S.ContainerNotFavorites>
+          <S.ContentPrimaryButtonNotFavorites>
+            <PrimaryButton
+              background="#75F7FF"
+              color="#000"
+              text="Conferir Sneakers"
+              width="261px"
+              heigth="56px"
+              onPress={() => navigation.navigate('HomeTab')}
+            />
+          </S.ContentPrimaryButtonNotFavorites>
+        </>
       );
     }
   };

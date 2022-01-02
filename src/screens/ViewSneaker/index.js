@@ -5,7 +5,7 @@ import {
   StyleSheet,
   FlatList,
   View,
-  Button,
+  ScrollView,
 } from 'react-native';
 import * as S from './styles';
 import {FavoritesContext} from '../../contexts/FavoriteContext';
@@ -106,73 +106,75 @@ const ViewSneaker = ({route, navigation, navigation: {goBack}}) => {
 
   return (
     <FavoriteListStructure>
-      <S.ContentCard>
-        <CardSneakers width="376px">
-          <S.ContentHandles>
-            <BackButton onPress={() => goBack()} />
-            <TouchableOpacity
-              onPress={() =>
-                ifExists(route.params?.sneakerNav)
-                  ? onRemoveFavorite(route.params?.sneakerNav)
-                  : onFavorite(route.params?.sneakerNav)
-              }>
-              <IconGlobal
-                source={
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <S.ContentCard>
+          <CardSneakers width="376px">
+            <S.ContentHandles>
+              <BackButton onPress={() => goBack()} />
+              <TouchableOpacity
+                onPress={() =>
                   ifExists(route.params?.sneakerNav)
-                    ? IMAGES.handle.favorite
-                    : IMAGES.handle.setFavorite
-                }
-              />
-            </TouchableOpacity>
-          </S.ContentHandles>
+                    ? onRemoveFavorite(route.params?.sneakerNav)
+                    : onFavorite(route.params?.sneakerNav)
+                }>
+                <IconGlobal
+                  source={
+                    ifExists(route.params?.sneakerNav)
+                      ? IMAGES.handle.favorite
+                      : IMAGES.handle.setFavorite
+                  }
+                />
+              </TouchableOpacity>
+            </S.ContentHandles>
 
-          <S.ContentImage>
-            <Image
-              source={{
-                uri: route.params?.image,
-              }}
-              style={{width: 280, height: 190}}
-              resizeMode="contain"
-            />
-          </S.ContentImage>
-          <S.ContentStars>
-            <IconGlobal source={IMAGES.stars.starFull} />
-            <IconGlobal source={IMAGES.stars.starFull} />
-            <IconGlobal source={IMAGES.stars.starFull} />
-            <IconGlobal source={IMAGES.stars.starFull} />
-            <IconGlobal source={IMAGES.stars.starHalf} />
-          </S.ContentStars>
-        </CardSneakers>
-        <S.ContentName>
-          <Text type="h1">{route.params?.shoe}</Text>
-        </S.ContentName>
-        <S.ContentPrice>
-          <Text type="h1Price">R$ {route.params?.price},00</Text>
-        </S.ContentPrice>
-      </S.ContentCard>
-      <S.ContentSize>
-        <Text type="p">Selecionar o tamanho</Text>
-        <FlatList
-          ItemSeparatorComponent={() => <View style={{width: 0}} />}
-          showsHorizontalScrollIndicator={false}
-          horizontal
-          data={dataSize}
-          renderItem={renderButtonSize}
-          keyExtractor={item => item.id}
-          extraData={selectedSize}
-        />
-      </S.ContentSize>
-      <S.ContentButtonBuy>
-        <PrimaryButton
-          background="#75F7FF"
-          color="#000"
-          text="Adicionar ao carrinho"
-          width="261px"
-          heigth="56px"
-          onPress={addToCart}
-        />
-      </S.ContentButtonBuy>
-      <Toast onPress={() => navigation.navigate('CartTab')} />
+            <S.ContentImage>
+              <Image
+                source={{
+                  uri: route.params?.image,
+                }}
+                style={{width: 280, height: 190}}
+                resizeMode="contain"
+              />
+            </S.ContentImage>
+            <S.ContentStars>
+              <IconGlobal source={IMAGES.stars.starFull} />
+              <IconGlobal source={IMAGES.stars.starFull} />
+              <IconGlobal source={IMAGES.stars.starFull} />
+              <IconGlobal source={IMAGES.stars.starFull} />
+              <IconGlobal source={IMAGES.stars.starHalf} />
+            </S.ContentStars>
+          </CardSneakers>
+          <S.ContentName>
+            <Text type="h1">{route.params?.shoe}</Text>
+          </S.ContentName>
+          <S.ContentPrice>
+            <Text type="h1Price">R$ {route.params?.price},00</Text>
+          </S.ContentPrice>
+        </S.ContentCard>
+        <S.ContentSize>
+          <Text type="p">Selecionar o tamanho</Text>
+          <FlatList
+            ItemSeparatorComponent={() => <View style={{width: 0}} />}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            data={dataSize}
+            renderItem={renderButtonSize}
+            keyExtractor={item => item.id}
+            extraData={selectedSize}
+          />
+        </S.ContentSize>
+        <S.ContentButtonBuy>
+          <PrimaryButton
+            background="#75F7FF"
+            color="#000"
+            text="Adicionar ao carrinho"
+            width="261px"
+            heigth="56px"
+            onPress={addToCart}
+          />
+        </S.ContentButtonBuy>
+        <Toast onPress={() => navigation.navigate('CartTab')} />
+      </ScrollView>
     </FavoriteListStructure>
   );
 };

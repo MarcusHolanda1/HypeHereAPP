@@ -17,7 +17,7 @@ import {SpanIcon} from '../design';
 import {FavoritesContext} from '../contexts/FavoriteContext';
 import {CartContext} from '../contexts/CartContext';
 import {ContextCart} from '../contexts/CartContext';
-import SplashCreen from 'react-native-splash-screen';
+import SplashScreen from 'react-native-splash-screen';
 
 const Tab = createBottomTabNavigator();
 
@@ -34,7 +34,7 @@ function Main() {
   const {cartSneakers} = useContext(ContextCart);
 
   useEffect(() => {
-    SplashCreen.hide();
+    SplashScreen.hide();
   });
 
   return (
