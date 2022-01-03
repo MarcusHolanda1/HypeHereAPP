@@ -13,7 +13,7 @@
 <h3 align="left">Descrição</h3>
 <p align="left">A HYPEHERE é um ecommerce de sneakers fictício, projetada com o intuito de praticar minhas skills com React Native. Neste projeto eu utilizei a api https://v1-sneakers.p.rapidapi.com/v1/sneakers para consumir as informações dos sneakers, como por exemplo as fotos, nomes, gêneros, e várias outras informações que essa api fornece, a api possui algumas falhas com imagens, mas podem ser tratadas facilmente por nós no front-end, basta usar a criatividade e abusar dessa api maravilhosa!</p>
 
- <h3 align="left">:hammer:	 Tecnologias utilizadas</h3>
+ <h3 align="left">Projeto</h3>
  <p>Neste projeto foi utilizado JavaScript e as seguintes bibliotecas:</p>
 
  - @react-native-masked-view/masked-view: ^0.2.6,
